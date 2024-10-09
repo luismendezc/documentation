@@ -4,35 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "6230b41b750bc10b",
+        "id": "aeaa4b14c68244d1",
         "type": "tabs",
         "children": [
           {
-            "id": "b9ffc69ae922ca7c",
+            "id": "d387ccf7a82123a8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Android/Android development.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "612504675467be4f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Android/inline, crossinline & noinline.md",
+                "file": "Android/Coroutines/Coroutine Contexts.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Android/inline, crossinline & noinline.md",
+                "file": "Android/Coroutines/Coroutine Contexts.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Android/inline, crossinline & noinline.md",
+                "file": "Android/Coroutines/Coroutine Contexts.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Android/inline, crossinline & noinline.md"
+                "file": "Android/Coroutines/Coroutine Contexts.md"
               }
             }
           }
@@ -159,12 +146,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "612504675467be4f",
+  "active": "d387ccf7a82123a8",
   "lastOpenFiles": [
     "Android/Android development.md",
+    "Android/Coroutines/Coroutines Basics.md",
+    "Android/Coroutines/Coroutine Contexts.md",
     "Welcome.md",
-    "create a link.md",
+    "videos 1.md",
     "Android/inline, crossinline & noinline.md",
+    "Dependency Locking in Android über Gradle.md",
+    "videos.md",
+    "videos/rotatingBox.mp4",
+    "videos",
+    "Android/Coroutines",
+    "images/Pasted image 20241008103749.png",
+    "images/Pasted image 20241008104059.png",
+    "images",
+    "images/Pasted image 20241008103903.png",
+    "create a link.md",
     "Android.md",
     "Android"
   ]
