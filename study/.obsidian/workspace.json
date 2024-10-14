@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "00962fb0fd6acbf0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Android/Coroutines/Coroutine Cancellation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Android/Coroutines/Coroutine Contexts.md",
+                "file": "Android/Coroutines/Coroutine Cancellation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Android/Coroutines/Coroutine Contexts.md",
+                "file": "Android/Coroutines/Coroutine Cancellation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Android/Coroutines/Coroutine Contexts.md"
+                "file": "Android/Coroutines/Coroutine Cancellation.md"
               }
             }
           }
@@ -146,11 +159,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d387ccf7a82123a8",
+  "active": "00962fb0fd6acbf0",
   "lastOpenFiles": [
-    "Android/Coroutines/Coroutines Basics.md",
-    "Android/Coroutines/Coroutine Contexts.md",
     "Android/Android development.md",
+    "Android/Coroutines/Coroutine Cancellation.md",
+    "Android/Coroutines/Coroutine Contexts.md",
+    "Android/Coroutines/Coroutines Basics.md",
     "Welcome.md",
     "videos 1.md",
     "Android/inline, crossinline & noinline.md",
