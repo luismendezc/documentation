@@ -7,6 +7,7 @@ Coroutines:
 - [[Coroutines Basics]]
 - [[Coroutine Contexts]]
 - [[Coroutine Cancellation]]
+- [[Coroutine Error Handling]]
 - 
 
 Wear OS:
