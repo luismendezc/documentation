@@ -8,7 +8,7 @@ Coroutines:
 - [[Coroutine Contexts]]
 - [[Coroutine Cancellation]]
 - [[Coroutine Error Handling]]
-- [[Callbacks on suspendfunctions , Combine what have we learnt so far]]
+- [[Callbacks on suspendCancellableCoroutine , Combine what have we learnt so far]]
 - 
 
 Wear OS:
