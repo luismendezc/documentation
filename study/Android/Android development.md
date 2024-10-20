@@ -16,4 +16,5 @@ Wear OS:
 
 Extra:
 - [[inline, crossinline & noinline]]
+- [[Understand LiveData and MutableLiveData]]
 - 
