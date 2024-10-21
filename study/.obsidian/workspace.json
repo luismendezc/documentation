@@ -4,25 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "aeaa4b14c68244d1",
+        "id": "9a4453c5907bc0ec",
         "type": "tabs",
         "children": [
           {
-            "id": "d387ccf7a82123a8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Android/Coroutines/Coroutine Contexts.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Coroutine Contexts"
-            }
-          },
-          {
-            "id": "00962fb0fd6acbf0",
+            "id": "6aad1eedae4dd8f0",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -33,50 +19,9 @@
               },
               "icon": "lucide-file",
               "title": "Android development"
-            }
-          },
-          {
-            "id": "9c55cd723248df33",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Android/Android development.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Android development"
-            }
-          },
-          {
-            "id": "ac6f2ee462eb396a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Android/Coroutines/Callbacks on suspendfunctions , Combine what have we learnt so far.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Callbacks on suspendfunctions , Combine what have we learnt so far"
-            }
-          },
-          {
-            "id": "b32f30e8fa254146",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.7.4"
-              },
-              "icon": "lucide-file",
-              "title": "Release Notes 1.7.4"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -108,7 +53,7 @@
               "type": "search",
               "state": {
                 "query": "",
-                "matchingCase": false,
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -217,17 +162,23 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ac6f2ee462eb396a",
+  "active": "6aad1eedae4dd8f0",
   "lastOpenFiles": [
+    "Android/Coroutines/Flow Fundamentals.md",
+    "Android/Coroutines/Coroutine Contexts.md",
+    "Tests.md",
+    "Android/Extra/Understanding Collections in Kotlin - Mutable, Immutable, Arrays, Lists, Maps, and Sets.md",
+    "Untitled",
+    "Android/Android development.md",
+    "Android/Extra/inline, crossinline & noinline.md",
+    "Android/Extra",
+    "Android/Coroutines/Coroutine Synchronization.md",
+    "Android/Coroutines/Coroutine Error Handling.md",
+    "Android/Coroutines/Coroutines Basics.md",
     "Android/Coroutines/Coroutine Cancellation.md",
     "Android/Coroutines/Callbacks on suspendfunctions , Combine what have we learnt so far.md",
-    "Android/Coroutines/Coroutine Error Handling.md",
-    "Android/Android development.md",
-    "Android/Coroutines/Coroutine Contexts.md",
-    "Android/Coroutines/Coroutines Basics.md",
     "Welcome.md",
     "videos 1.md",
-    "Android/inline, crossinline & noinline.md",
     "Dependency Locking in Android über Gradle.md",
     "videos.md",
     "videos/rotatingBox.mp4",
