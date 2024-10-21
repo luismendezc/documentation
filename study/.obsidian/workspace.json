@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Android/Android development.md",
+                "file": "Android/Coroutines/Flows in Practice.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Android development"
+              "title": "Flows in Practice"
             }
           }
         ]
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Android/Android development.md",
+                "file": "Android/Coroutines/Flows in Practice.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Android development"
+              "title": "Backlinks for Flows in Practice"
             }
           },
           {
@@ -112,12 +112,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Android/Android development.md",
+                "file": "Android/Coroutines/Flows in Practice.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Android development"
+              "title": "Outgoing links from Flows in Practice"
             }
           },
           {
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Android/Android development.md"
+                "file": "Android/Coroutines/Flows in Practice.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Android development"
+              "title": "Outline of Flows in Practice"
             }
           }
         ]
@@ -163,5 +163,14 @@
     }
   },
   "active": "2e4ad575c2ab6af4",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "Android/Android development.md",
+    "videos/rotatingBox.mp4",
+    "System Administration/Automating with Shell Scripting.md",
+    "Welcome.md",
+    "create a link.md",
+    "Android/Dependency Locking in Android über Gradle.md",
+    "Android/Coroutines/Flows in Practice.md",
+    "Tests.md"
+  ]
 }
