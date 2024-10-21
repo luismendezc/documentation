@@ -19,4 +19,5 @@ Wear OS:
 Extra:
 - [[inline, crossinline & noinline]]
 - [[Understanding Collections in Kotlin - Mutable, Immutable, Arrays, Lists, Maps, and Sets]]
+- [[Understand LiveData and MutableLiveData]]
 - 

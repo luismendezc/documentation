@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "98e1377b81b0b24a",
+    "id": "129b2a82d6407738",
     "type": "split",
     "children": [
       {
-        "id": "9a4453c5907bc0ec",
+        "id": "413e4d5661513ac7",
         "type": "tabs",
         "children": [
           {
-            "id": "6aad1eedae4dd8f0",
+            "id": "2e4ad575c2ab6af4",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "9f7a8bbefe31ea24",
+    "id": "58dbae9364875a61",
     "type": "split",
     "children": [
       {
-        "id": "3c21aa3fe22b1f88",
+        "id": "10f2ba68cba952af",
         "type": "tabs",
         "children": [
           {
-            "id": "b6010c7780b1ddd9",
+            "id": "49741b18b7f0c3e5",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -47,13 +47,13 @@
             }
           },
           {
-            "id": "a0a03d8618f77598",
+            "id": "d7505fde2ab4d199",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
                 "query": "",
-                "matchingCase": true,
+                "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -64,7 +64,7 @@
             }
           },
           {
-            "id": "c0822d3a57578f22",
+            "id": "c13dc970d17101d9",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -80,20 +80,20 @@
     "width": 300
   },
   "right": {
-    "id": "85460386773da0d5",
+    "id": "1b9272b043b2b768",
     "type": "split",
     "children": [
       {
-        "id": "332557d1034ccef6",
+        "id": "7d6deaad51228fd5",
         "type": "tabs",
         "children": [
           {
-            "id": "50f675d6ca56fe27",
+            "id": "d06151eb0856d76a",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Android/Coroutines/Callbacks on suspendfunctions , Combine what have we learnt so far.md",
+                "file": "Android/Android development.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,25 +103,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Callbacks on suspendfunctions , Combine what have we learnt so far"
+              "title": "Backlinks for Android development"
             }
           },
           {
-            "id": "4888152c3047cff0",
+            "id": "8cadef9d06886b33",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Android/Coroutines/Callbacks on suspendfunctions , Combine what have we learnt so far.md",
+                "file": "Android/Android development.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Callbacks on suspendfunctions , Combine what have we learnt so far"
+              "title": "Outgoing links from Android development"
             }
           },
           {
-            "id": "29591ab3361476f4",
+            "id": "421ccf6c397d5f7f",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -134,15 +134,15 @@
             }
           },
           {
-            "id": "7a386ad54223b00f",
+            "id": "5614973ea06d47ff",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Android/Coroutines/Callbacks on suspendfunctions , Combine what have we learnt so far.md"
+                "file": "Android/Android development.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Callbacks on suspendfunctions , Combine what have we learnt so far"
+              "title": "Outline of Android development"
             }
           }
         ]
@@ -162,34 +162,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6aad1eedae4dd8f0",
-  "lastOpenFiles": [
-    "Android/Coroutines/Flow Fundamentals.md",
-    "Android/Coroutines/Coroutine Contexts.md",
-    "Tests.md",
-    "Android/Extra/Understanding Collections in Kotlin - Mutable, Immutable, Arrays, Lists, Maps, and Sets.md",
-    "Untitled",
-    "Android/Android development.md",
-    "Android/Extra/inline, crossinline & noinline.md",
-    "Android/Extra",
-    "Android/Coroutines/Coroutine Synchronization.md",
-    "Android/Coroutines/Coroutine Error Handling.md",
-    "Android/Coroutines/Coroutines Basics.md",
-    "Android/Coroutines/Coroutine Cancellation.md",
-    "Android/Coroutines/Callbacks on suspendfunctions , Combine what have we learnt so far.md",
-    "Welcome.md",
-    "videos 1.md",
-    "Dependency Locking in Android über Gradle.md",
-    "videos.md",
-    "videos/rotatingBox.mp4",
-    "videos",
-    "Android/Coroutines",
-    "images/Pasted image 20241008103749.png",
-    "images/Pasted image 20241008104059.png",
-    "images",
-    "images/Pasted image 20241008103903.png",
-    "create a link.md",
-    "Android.md",
-    "Android"
-  ]
+  "active": "2e4ad575c2ab6af4",
+  "lastOpenFiles": []
 }
