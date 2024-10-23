@@ -18,11 +18,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        backpressureDemo()
+        //flatMapDemo()
         setContent {
             Flows_PracticeTheme {
-                Scaffold { innerPadding ->
+                /*Scaffold { innerPadding ->
                     WebSocketUi(modifier = Modifier.padding(innerPadding))
-                }
+                }*/
                 //TimerUi()
             }
         }
