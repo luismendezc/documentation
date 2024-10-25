@@ -42,6 +42,7 @@ android {
 dependencies {
 
     implementation(libs.koin)
+    testImplementation(libs.coroutines.test)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

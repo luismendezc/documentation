@@ -12,7 +12,7 @@ class AuthCommandWithoutDispatcher: AuthCommandInterface {
         CoroutineScope(Dispatchers.IO).launch {
             // Simulate work
             println("AuthCommandWithoutDispatcher is running on IO thread")
-            delay(1000)
+            delay(1000L)
             isComplete = true
             println("Task completed successfully")
         }
