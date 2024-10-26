@@ -38,10 +38,6 @@ class MainActivity : AppCompatActivity() {
         }
     }.toTypedArray()
 
-
-
-
-
     // ActivityResultLauncher for picking an image
     private val pickImageLauncher =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
@@ -77,6 +73,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
     }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
