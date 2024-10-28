@@ -1,4 +1,4 @@
-package com.plcoding.cryptotracker.util
+package com.plcoding.cryptotracker.core.domain.util
 
 typealias DomainError = Error
 
@@ -35,10 +35,6 @@ inline fun <T, E: Error> Result<T, E>.onError(action: (E) -> Unit): Result<T, E>
         }
         is Result.Success -> this
     }
-}
-
-val perro = Result.Success<String>("").onSuccess { data ->
-    println("data")
 }
 
 typealias EmptyResult<E> = Result<Unit, E>
