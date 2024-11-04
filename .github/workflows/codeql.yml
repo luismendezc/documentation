@@ -3,12 +3,8 @@ name: "CodeQL Advanced"
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - "documentation/android_apps/LabTestCoroutinesFlows/**"
   pull_request:
     branches: [ "main" ]
-    paths:
-      - "documentation/android_apps/LabTestCoroutinesFlows/**"
   schedule:
     - cron: '45 6 * * 5'
 
