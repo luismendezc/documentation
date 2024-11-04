@@ -31,7 +31,8 @@ class FlowViewModel(
 
     private val _password = MutableStateFlow("")
     val password = _password.asStateFlow()
-    
+
+    // TODO
     val canRegister = email
         .debounce(500L)
         .combine(
