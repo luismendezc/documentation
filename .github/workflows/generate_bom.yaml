@@ -20,7 +20,9 @@ jobs:
 #          npm install @cyclonedx/bom
 #          npx cyclonedx-bom -o bom.xml
       - name: Generate BOM for Kotlin Project
-        run: android_apps/LabTestCoroutinesFlows/gradlew :android_apps:LabTestCoroutinesFlows:cyclonedxBom
+        run: |
+         cd android_apps/LabTestCoroutinesFlows   
+         ./gradlew :android_apps:LabTestCoroutinesFlows:cyclonedxBom
 
       - name: Upload BOM as Artifact
         uses: actions/upload-artifact@v3
