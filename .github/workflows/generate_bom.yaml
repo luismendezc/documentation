@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "android_apps/LabTestCoroutinesFlows/**"      
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,8 +12,8 @@ jobs:
 
       - name: Generate BOM
         run: |
-          npm install -g @cyclonedx/bom
-          cyclonedx-bom -o bom.xml
+          npm install @cyclonedx/bom
+          npx cyclonedx-bom -o bom.xml
 
       - name: Upload BOM as Artifact
         uses: actions/upload-artifact@v3
