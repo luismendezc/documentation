@@ -10,10 +10,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Generate BOM
-        run: |
-          npm install @cyclonedx/bom
-          npx cyclonedx-bom -o bom.xml
+#      - name: Generate BOM
+#        run: |
+#          npm install @cyclonedx/bom
+#          npx cyclonedx-bom -o bom.xml
+      - name: Generate BOM for Kotlin Project
+        run: ./gradlew :android_apps:LabTestCoroutinesFlows:cyclonedxBom
 
       - name: Upload BOM as Artifact
         uses: actions/upload-artifact@v3
