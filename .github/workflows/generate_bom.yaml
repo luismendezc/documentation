@@ -22,6 +22,8 @@ jobs:
       - name: Generate BOM for Kotlin Project
         run: |
          cd android_apps/LabTestCoroutinesFlows   
+         ls
+         pwd
          ./gradlew cyclonedxBom
 
       - name: Upload BOM as Artifact
