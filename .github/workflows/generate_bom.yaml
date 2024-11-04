@@ -9,7 +9,12 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-
+        
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'   
 #      - name: Generate BOM
 #        run: |
 #          npm install @cyclonedx/bom
