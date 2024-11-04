@@ -1,0 +1,22 @@
+name: Dependency-Track BOM
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Generate BOM
+        run: |
+          npm install -g @cyclonedx/bom
+          cyclonedx-bom -o bom.xml
+
+      - name: Upload BOM as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: bom-file
+          path: bom.xml
