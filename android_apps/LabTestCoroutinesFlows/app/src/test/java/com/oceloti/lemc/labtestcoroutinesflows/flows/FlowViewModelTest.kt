@@ -24,6 +24,7 @@ class FlowViewModelTest{
         )
     }
 
+    // launching coroutine
     @Test
     fun testRegisterLoading_withFlow() = runTest(testDispatchers.testDispatcher) {
         val loadingState = mutableListOf<Boolean>()
