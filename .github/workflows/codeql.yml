@@ -42,7 +42,7 @@ jobs:
     - name: Build LabTestCoroutinesFlows app
       if: matrix.build-mode == 'manual'
       run: |
-        cd documentation/android_apps/LabTestCoroutinesFlows
+        cd android_apps/LabTestCoroutinesFlows
         ./gradlew clean build
 
     - name: Perform CodeQL Analysis
