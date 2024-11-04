@@ -4,11 +4,11 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - "/android_apps/LabTestCoroutinesFlows/**"
+      - "documentation/android_apps/LabTestCoroutinesFlows/**"
   pull_request:
     branches: [ "main" ]
     paths:
-      - "/android_apps/LabTestCoroutinesFlows/**"
+      - "documentation/android_apps/LabTestCoroutinesFlows/**"
   schedule:
     - cron: '45 6 * * 5'
 
