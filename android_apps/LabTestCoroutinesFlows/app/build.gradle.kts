@@ -3,10 +3,7 @@ import com.android.build.api.dsl.Packaging
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("org.cyclonedx.bom") version "1.10.0"
 }
-group = "com.oceloti.lemc"
-version = "1.0.0"
 
 android {
     namespace = "com.oceloti.lemc.labtestcoroutinesflows"
