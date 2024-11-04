@@ -33,7 +33,7 @@ class FlowViewModel(
     val password = _password.asStateFlow()
 
 
-    //TODO: Test this hot flow
+    //TODO: Test this hot flow with turbine
     val canRegister = email
         .debounce(500L)
         .combine(
