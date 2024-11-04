@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "android_apps/LabTestCoroutinesFlows/**"      
 jobs:
   build:
     runs-on: ubuntu-latest
