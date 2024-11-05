@@ -1,0 +1,1 @@
+https://harmonyoshub.com/global-developers-can-now-download-final-api-12-release-deveco-studio-5-0-0-for-harmonyos-5-development/
