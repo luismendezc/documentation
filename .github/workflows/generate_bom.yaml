@@ -1,0 +1,33 @@
+name: Dependency-Track BOM
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'   
+#      - name: Generate BOM
+#        run: |
+#          npm install @cyclonedx/bom
+#          npx cyclonedx-bom -o bom.xml
+      - name: Generate BOM for Kotlin Project
+        run: |
+         cd android_apps/LabTestCoroutinesFlows   
+         ls
+         pwd
+         ./gradlew cyclonedxBom
+
+      - name: Upload BOM as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: bom-file
+          path: bom.xml

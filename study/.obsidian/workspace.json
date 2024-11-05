@@ -4,21 +4,37 @@
     "type": "split",
     "children": [
       {
+<<<<<<< HEAD
         "id": "db4156b0cc9c9b3c",
         "type": "tabs",
         "children": [
           {
             "id": "f2fb666a42704bdc",
+=======
+        "id": "70f878e46ad97f58",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "731632d3c80c5814",
+>>>>>>> a2ee22b6b3599e8bd81ca1a1d196074ac7c82d44
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "Harmony OS/DevEco.md",
+=======
+                "file": "Android/Coroutines/Coroutine Error Handling.md",
+>>>>>>> a2ee22b6b3599e8bd81ca1a1d196074ac7c82d44
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
+<<<<<<< HEAD
               "title": "DevEco"
+=======
+              "title": "Coroutine Error Handling"
+>>>>>>> a2ee22b6b3599e8bd81ca1a1d196074ac7c82d44
             }
           }
         ]
@@ -52,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "coroutineScope",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,7 +89,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -162,17 +179,27 @@
       "command-palette:Open command palette": false
     }
   },
+<<<<<<< HEAD
   "active": "49741b18b7f0c3e5",
   "lastOpenFiles": [
     "Harmony OS/DevEco.md",
     "Harmony OS",
     "AWS Cloud Practitioner (CLF-C02)/AWS Cloud Practitioner Index.md",
     "AWS Cloud Practitioner (CLF-C02)/1 - Cloud Computing.md",
+=======
+  "active": "731632d3c80c5814",
+  "lastOpenFiles": [
+    "Android/Coroutines/Coroutine Contexts.md",
+    "Android/Android development.md",
+    "Android/Coroutines/Coroutines Basics.md",
+    "AWS Cloud Practitioner (CLF-C02)/AWS Cloud Practitioner Index.md",
+    "AWS Cloud Practitioner (CLF-C02)/1 - Cloud Computing.md",
+    "Untitled.md",
+>>>>>>> a2ee22b6b3599e8bd81ca1a1d196074ac7c82d44
     "images/AWS Cloud Practitioner (CLF-C02) images/Pasted image 20241029180424.png",
     "images/AWS Cloud Practitioner (CLF-C02) images",
     "images/AWS Cloud Practitioner (CLF-C02) images/Pasted image 20241029174921.png",
     "AWS Cloud Practitioner (CLF-C02)/Cloud Computing",
-    "Android/Android development.md",
     "Android/Extra/Dependency Injection Dagger-Hilt.md",
     "AWS Cloud Practitioner (CLF-C02)",
     "System Administration/Bash manual.md",
