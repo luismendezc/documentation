@@ -1,40 +1,24 @@
 {
   "main": {
-    "id": "129b2a82d6407738",
+    "id": "5af67527cc935ae0",
     "type": "split",
     "children": [
       {
-<<<<<<< HEAD
-        "id": "db4156b0cc9c9b3c",
+        "id": "e8ad1a612633d938",
         "type": "tabs",
         "children": [
           {
-            "id": "f2fb666a42704bdc",
-=======
-        "id": "70f878e46ad97f58",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "731632d3c80c5814",
->>>>>>> a2ee22b6b3599e8bd81ca1a1d196074ac7c82d44
+            "id": "60af369217ba0d55",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-<<<<<<< HEAD
-                "file": "Harmony OS/DevEco.md",
-=======
-                "file": "Android/Coroutines/Coroutine Error Handling.md",
->>>>>>> a2ee22b6b3599e8bd81ca1a1d196074ac7c82d44
+                "file": "Environment Management in Xcode Using “.xcconfig” Files.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-<<<<<<< HEAD
-              "title": "DevEco"
-=======
-              "title": "Coroutine Error Handling"
->>>>>>> a2ee22b6b3599e8bd81ca1a1d196074ac7c82d44
+              "title": "Environment Management in Xcode Using “.xcconfig” Files"
             }
           }
         ]
@@ -43,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "58dbae9364875a61",
+    "id": "d276896fcb777837",
     "type": "split",
     "children": [
       {
-        "id": "10f2ba68cba952af",
+        "id": "c2f0454b9f62d18d",
         "type": "tabs",
         "children": [
           {
-            "id": "49741b18b7f0c3e5",
+            "id": "f982fe60158fab1d",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -63,12 +47,12 @@
             }
           },
           {
-            "id": "d7505fde2ab4d199",
+            "id": "051b6011122ba203",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "coroutineScope",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -80,7 +64,7 @@
             }
           },
           {
-            "id": "c13dc970d17101d9",
+            "id": "7cfa586421267c2a",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -89,28 +73,27 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
   "right": {
-    "id": "1b9272b043b2b768",
+    "id": "db566adb2ece55c4",
     "type": "split",
     "children": [
       {
-        "id": "7d6deaad51228fd5",
+        "id": "adc49d3d1c8d9b81",
         "type": "tabs",
         "children": [
           {
-            "id": "d06151eb0856d76a",
+            "id": "777f12084bc1d857",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Android/Coroutines/Flows in Practice.md",
+                "file": "Environment Management in Xcode Using “.xcconfig” Files.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,25 +103,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Flows in Practice"
+              "title": "Backlinks for Environment Management in Xcode Using “.xcconfig” Files"
             }
           },
           {
-            "id": "8cadef9d06886b33",
+            "id": "1c3c9f2b22600eb6",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Android/Coroutines/Flows in Practice.md",
+                "file": "Environment Management in Xcode Using “.xcconfig” Files.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Flows in Practice"
+              "title": "Outgoing links from Environment Management in Xcode Using “.xcconfig” Files"
             }
           },
           {
-            "id": "421ccf6c397d5f7f",
+            "id": "f75bfc730f6814e6",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -151,15 +134,15 @@
             }
           },
           {
-            "id": "5614973ea06d47ff",
+            "id": "40c670921f379199",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Android/Coroutines/Flows in Practice.md"
+                "file": "Environment Management in Xcode Using “.xcconfig” Files.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Flows in Practice"
+              "title": "Outline of Environment Management in Xcode Using “.xcconfig” Files"
             }
           }
         ]
@@ -179,53 +162,10 @@
       "command-palette:Open command palette": false
     }
   },
-<<<<<<< HEAD
-  "active": "49741b18b7f0c3e5",
+  "active": "60af369217ba0d55",
   "lastOpenFiles": [
-    "Harmony OS/DevEco.md",
-    "Harmony OS",
-    "AWS Cloud Practitioner (CLF-C02)/AWS Cloud Practitioner Index.md",
-    "AWS Cloud Practitioner (CLF-C02)/1 - Cloud Computing.md",
-=======
-  "active": "731632d3c80c5814",
-  "lastOpenFiles": [
-    "Android/Coroutines/Coroutine Contexts.md",
-    "Android/Android development.md",
-    "Android/Coroutines/Coroutines Basics.md",
-    "AWS Cloud Practitioner (CLF-C02)/AWS Cloud Practitioner Index.md",
-    "AWS Cloud Practitioner (CLF-C02)/1 - Cloud Computing.md",
-    "Untitled.md",
->>>>>>> a2ee22b6b3599e8bd81ca1a1d196074ac7c82d44
-    "images/AWS Cloud Practitioner (CLF-C02) images/Pasted image 20241029180424.png",
-    "images/AWS Cloud Practitioner (CLF-C02) images",
-    "images/AWS Cloud Practitioner (CLF-C02) images/Pasted image 20241029174921.png",
-    "AWS Cloud Practitioner (CLF-C02)/Cloud Computing",
-    "Android/Extra/Dependency Injection Dagger-Hilt.md",
-    "AWS Cloud Practitioner (CLF-C02)",
-    "System Administration/Bash manual.md",
-    "Android/Testing/A B Testing.md",
-    "Android/Testing",
-    "pdf/AdministraciondeSistemasparalaCloud.pdf",
-    "pdf/120-Android-Interview-Qestions-For-2022.pdf",
-    "Android/Extra/Dependency Locking in Android über Gradle.md",
-    "Android/Extra/Package Structure.md",
-    "Android/Extra/Sealed Class vs Enum Class vs Sealed Interfaces.md",
-    "Android/Extra/MVI vs MVVM.md",
-    "Android/Image Compression/How to Implement Image Compression on Android.md",
-    "Android/Extra/svg to xml vector.md",
-    "Android/Extra/Understand LiveData and MutableLiveData.md",
-    "Technology Information - Extra/Bitmaps, MIME.md",
-    "Android/Coroutines/Coroutine Cancellation.md",
-    "Android/Coroutines/Coroutine Error Handling.md",
-    "Android/Image Compression",
-    "Technology Information - Extra",
-    "Android/Coroutines/Testing Coroutines & Flows.md",
-    "pdf/testing-cheat-sheet.pdf",
-    "Android/Coroutines/Flow Fundamentals.md",
-    "Android/Coroutines/Flows in Practice.md",
-    "System Administration/Automating with Shell Scripting.md",
-    "Welcome.md",
-    "create a link.md",
-    "Tests.md"
+    "images/Pasted image 20241108181139.png",
+    "Environment Management in Xcode Using “.xcconfig” Files.md",
+    "iOS"
   ]
 }
