@@ -1,5 +1,6 @@
 {
   "main": {
+<<<<<<< HEAD
     "id": "958e539ba2a3d897",
     "type": "split",
     "children": [
@@ -9,16 +10,35 @@
         "children": [
           {
             "id": "79c22b2d25bd2ce7",
+=======
+    "id": "5af67527cc935ae0",
+    "type": "split",
+    "children": [
+      {
+        "id": "e8ad1a612633d938",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "60af369217ba0d55",
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "Cloud Computing/Setup apache server with php page in Virtual Box Machine and NAT adapter.md",
+=======
+                "file": "Environment Management in Xcode Using “.xcconfig” Files.md",
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
+<<<<<<< HEAD
               "title": "Setup apache server with php page in Virtual Box Machine and NAT adapter"
+=======
+              "title": "Environment Management in Xcode Using “.xcconfig” Files"
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
             }
           }
         ]
@@ -27,6 +47,7 @@
     "direction": "vertical"
   },
   "left": {
+<<<<<<< HEAD
     "id": "577c6a07eca5e7af",
     "type": "split",
     "children": [
@@ -36,6 +57,17 @@
         "children": [
           {
             "id": "f4dd6154255f8f5a",
+=======
+    "id": "d276896fcb777837",
+    "type": "split",
+    "children": [
+      {
+        "id": "c2f0454b9f62d18d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f982fe60158fab1d",
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -47,7 +79,11 @@
             }
           },
           {
+<<<<<<< HEAD
             "id": "65c21ab503bdfbe8",
+=======
+            "id": "051b6011122ba203",
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
             "type": "leaf",
             "state": {
               "type": "search",
@@ -64,7 +100,11 @@
             }
           },
           {
+<<<<<<< HEAD
             "id": "fb9719c509aa1ad6",
+=======
+            "id": "7cfa586421267c2a",
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -80,6 +120,7 @@
     "width": 296.5
   },
   "right": {
+<<<<<<< HEAD
     "id": "b2a03ffcf65a14c4",
     "type": "split",
     "children": [
@@ -89,11 +130,26 @@
         "children": [
           {
             "id": "e5e595850131988f",
+=======
+    "id": "db566adb2ece55c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "adc49d3d1c8d9b81",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "777f12084bc1d857",
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "file": "pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
+=======
+                "file": "Environment Management in Xcode Using “.xcconfig” Files.md",
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,25 +159,45 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
+<<<<<<< HEAD
               "title": "Backlinks for Herramientas_de_Automatizacion_de_Despliegues"
             }
           },
           {
             "id": "da78846157d027df",
+=======
+              "title": "Backlinks for Environment Management in Xcode Using “.xcconfig” Files"
+            }
+          },
+          {
+            "id": "1c3c9f2b22600eb6",
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+<<<<<<< HEAD
                 "file": "pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
+=======
+                "file": "Environment Management in Xcode Using “.xcconfig” Files.md",
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
+<<<<<<< HEAD
               "title": "Outgoing links from Herramientas_de_Automatizacion_de_Despliegues"
             }
           },
           {
             "id": "d8570c037716f2db",
+=======
+              "title": "Outgoing links from Environment Management in Xcode Using “.xcconfig” Files"
+            }
+          },
+          {
+            "id": "f75bfc730f6814e6",
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -134,15 +210,26 @@
             }
           },
           {
+<<<<<<< HEAD
             "id": "2fbe04cd009147d5",
+=======
+            "id": "40c670921f379199",
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
+<<<<<<< HEAD
                 "file": "pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf"
               },
               "icon": "lucide-list",
               "title": "Outline of Herramientas_de_Automatizacion_de_Despliegues"
+=======
+                "file": "Environment Management in Xcode Using “.xcconfig” Files.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Environment Management in Xcode Using “.xcconfig” Files"
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
             }
           }
         ]
@@ -162,6 +249,7 @@
       "command-palette:Open command palette": false
     }
   },
+<<<<<<< HEAD
   "active": "79c22b2d25bd2ce7",
   "lastOpenFiles": [
     "images/Cloud Computing/Pasted image 20241109205910.png",
@@ -183,5 +271,12 @@
     "pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
     "pdf/SecDevOpsyAdministracióndeRedesparaCloud.pdf",
     "pdf/AdministraciondeSistemasparalaCloud.pdf"
+=======
+  "active": "60af369217ba0d55",
+  "lastOpenFiles": [
+    "images/Pasted image 20241108181139.png",
+    "Environment Management in Xcode Using “.xcconfig” Files.md",
+    "iOS"
+>>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
   ]
 }
