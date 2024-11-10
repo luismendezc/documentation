@@ -1,5 +1,8 @@
 This is guide is meant for the setup of a virtual machine with an apache server that shows an php dummy page, it is important to notice that this will be done with a NAT adapter instead of a bridge adpater due to the configuration of the network I live in (does not allow any simulated MAC adress presumably), so the idea will be to change the port that the apache server listens and exposes the app and then also map the ports in the nat adapter so we can access the web app from the host machine (my computer).
 
+Interesting video:
+https://www.youtube.com/watch?v=d7Kkbyb1TjQ&ab_channel=KeepItTechie
+
 ### 1. **Set Up the Ubuntu VM**:
 
 Install Virtual Vox:
@@ -173,3 +176,34 @@ sudo systemctl disable apache2
 ### RESULT:
 
 ![[Pasted image 20241109205910.png]]
+#### Bash script to setup apache server and php:
+In the case of use for EC2 in AWS:
+You can add this script (or just the commands you need) to the EC2 **User Data** section when launching the instance. User Data runs as the root user, so `sudo` may not be required.
+```bash
+#!/bin/bash
+# Update package lists
+apt-get update -y
+# Install Apache and PHP with required modules
+apt-get install -y apache2 php libapache2-mod-php
+# Remove existing index.html or index.php if they exist
+for file in /var/www/html/index.html /var/www/html/index.php; do
+    if [ -f "$file" ]; then
+        rm "$file"
+        echo "$file has been removed to avoid conflicts."
+    fi
+done
+
+# Define the path for the dummy PHP file
+file_name="/var/www/html/index.php"
+# Create the PHP file with styled content
+echo "Creating $file_name with the info PHP basic page."
+cat <<EOL > "$file_name"
+<?php phpinfo(); ?>
+EOL
+
+# Restart Apache to apply changes
+systemctl restart apache2
+
+echo "Setup complete."
+
+```

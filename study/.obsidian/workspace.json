@@ -1,44 +1,24 @@
 {
   "main": {
-<<<<<<< HEAD
-    "id": "958e539ba2a3d897",
+    "id": "23702b5933d50657",
     "type": "split",
     "children": [
       {
-        "id": "a10564fbcfaa7fc7",
+        "id": "0a568958d2a28f8c",
         "type": "tabs",
         "children": [
           {
-            "id": "79c22b2d25bd2ce7",
-=======
-    "id": "5af67527cc935ae0",
-    "type": "split",
-    "children": [
-      {
-        "id": "e8ad1a612633d938",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "60af369217ba0d55",
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+            "id": "0b3c0d0ad5d23a22",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-<<<<<<< HEAD
-                "file": "Cloud Computing/Setup apache server with php page in Virtual Box Machine and NAT adapter.md",
-=======
-                "file": "Environment Management in Xcode Using “.xcconfig” Files.md",
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+                "file": "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-<<<<<<< HEAD
-              "title": "Setup apache server with php page in Virtual Box Machine and NAT adapter"
-=======
-              "title": "Environment Management in Xcode Using “.xcconfig” Files"
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+              "title": "How to connect to Amazon EC2 with ssh"
             }
           }
         ]
@@ -47,27 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-<<<<<<< HEAD
-    "id": "577c6a07eca5e7af",
+    "id": "ebce4bd62aeb89eb",
     "type": "split",
     "children": [
       {
-        "id": "73b760584a8e5fe2",
+        "id": "82e9552b50f1c25d",
         "type": "tabs",
         "children": [
           {
-            "id": "f4dd6154255f8f5a",
-=======
-    "id": "d276896fcb777837",
-    "type": "split",
-    "children": [
-      {
-        "id": "c2f0454b9f62d18d",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "f982fe60158fab1d",
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+            "id": "ba743f183c2dac18",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -79,11 +47,7 @@
             }
           },
           {
-<<<<<<< HEAD
-            "id": "65c21ab503bdfbe8",
-=======
-            "id": "051b6011122ba203",
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+            "id": "b1fe872308d8829c",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -100,11 +64,7 @@
             }
           },
           {
-<<<<<<< HEAD
-            "id": "fb9719c509aa1ad6",
-=======
-            "id": "7cfa586421267c2a",
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+            "id": "da120a89603d17ac",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -117,39 +77,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 296.5
+    "width": 268.5
   },
   "right": {
-<<<<<<< HEAD
-    "id": "b2a03ffcf65a14c4",
+    "id": "38026759dbefcf26",
     "type": "split",
     "children": [
       {
-        "id": "e21ff5cdeab6fbbe",
+        "id": "abe3ce6d60170f62",
         "type": "tabs",
         "children": [
           {
-            "id": "e5e595850131988f",
-=======
-    "id": "db566adb2ece55c4",
-    "type": "split",
-    "children": [
-      {
-        "id": "adc49d3d1c8d9b81",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "777f12084bc1d857",
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+            "id": "7420ec4b85713ddf",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-<<<<<<< HEAD
-                "file": "pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
-=======
-                "file": "Environment Management in Xcode Using “.xcconfig” Files.md",
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+                "file": "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,45 +103,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-<<<<<<< HEAD
-              "title": "Backlinks for Herramientas_de_Automatizacion_de_Despliegues"
+              "title": "Backlinks for How to connect to Amazon EC2 with ssh"
             }
           },
           {
-            "id": "da78846157d027df",
-=======
-              "title": "Backlinks for Environment Management in Xcode Using “.xcconfig” Files"
-            }
-          },
-          {
-            "id": "1c3c9f2b22600eb6",
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+            "id": "5bf9dd5a442e588e",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-<<<<<<< HEAD
-                "file": "pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
-=======
-                "file": "Environment Management in Xcode Using “.xcconfig” Files.md",
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-<<<<<<< HEAD
-              "title": "Outgoing links from Herramientas_de_Automatizacion_de_Despliegues"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "d8570c037716f2db",
-=======
-              "title": "Outgoing links from Environment Management in Xcode Using “.xcconfig” Files"
-            }
-          },
-          {
-            "id": "f75bfc730f6814e6",
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+            "id": "106cdfde06652ddc",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -210,26 +133,13 @@
             }
           },
           {
-<<<<<<< HEAD
-            "id": "2fbe04cd009147d5",
-=======
-            "id": "40c670921f379199",
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+            "id": "4e91d63e3d9ed467",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-<<<<<<< HEAD
-                "file": "pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf"
-              },
+              "state": {},
               "icon": "lucide-list",
-              "title": "Outline of Herramientas_de_Automatizacion_de_Despliegues"
-=======
-                "file": "Environment Management in Xcode Using “.xcconfig” Files.md"
-              },
-              "icon": "lucide-list",
-              "title": "Outline of Environment Management in Xcode Using “.xcconfig” Files"
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+              "title": "Outline"
             }
           }
         ]
@@ -249,34 +159,22 @@
       "command-palette:Open command palette": false
     }
   },
-<<<<<<< HEAD
-  "active": "79c22b2d25bd2ce7",
+  "active": "0b3c0d0ad5d23a22",
   "lastOpenFiles": [
-    "images/Cloud Computing/Pasted image 20241109205910.png",
-    "images/Pasted image 20241019213938.png",
+    "System Administration/AWS/No use root account for AWS use users.md",
     "Cloud Computing/Setup apache server with php page in Virtual Box Machine and NAT adapter.md",
-    "Pasted image 20241109205843.png",
-    "Pasted image 20241109205832.png",
-    "images/Cloud Computing/Pasted image 20241109205320.png",
-    "images/Cloud Computing/Pasted image 20241109201448.png",
-    "images/Cloud Computing/Pasted image 20241109201816.png",
-    "images/Cloud Computing",
-    "images/Android/Pasted image 20241019213911.png",
-    "images/Android",
-    "images/Android/Pasted image 20241008104059.png",
-    "images/Android/Pasted image 20241008103903.png",
-    "System Administration/Linux distributions.md",
-    "Cloud Computing",
-    "pdf/Cloud_Computing_DevOps_y_DevOps_Culture.pdf",
-    "pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
-    "pdf/SecDevOpsyAdministracióndeRedesparaCloud.pdf",
-    "pdf/AdministraciondeSistemasparalaCloud.pdf"
-=======
-  "active": "60af369217ba0d55",
-  "lastOpenFiles": [
-    "images/Pasted image 20241108181139.png",
-    "Environment Management in Xcode Using “.xcconfig” Files.md",
-    "iOS"
->>>>>>> 45e26d964a9e5e30c64a82369b3567265cb90436
+    "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
+    "iOS/Environment Management in Xcode Using “.xcconfig” Files.md",
+    "Welcome.md",
+    "iOS",
+    "Cloud Computing/Grafana.md",
+    "Cloud Computing/Bash script to setup apache server and php.md",
+    "System Administration/Generating a new SSH key and adding it to the ssh-agent.md",
+    "System Administration/Automating with Shell Scripting.md",
+    "System Administration/Bash manual.md",
+    "IMPORTANT.md",
+    "AWS Cloud Practitioner (CLF-C02)/1 - Cloud Computing.md",
+    "AWS Cloud Practitioner (CLF-C02)/AWS Cloud Practitioner Index.md",
+    "pdf/Cloud_Computing_DevOps_y_DevOps_Culture.pdf"
   ]
 }
