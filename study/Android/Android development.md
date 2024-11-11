@@ -22,6 +22,10 @@ Image Compression:
 - [[How to Implement Image Compression on Android]]
 - 
 
+Network calls:
+- [[Retrofit]]
+- 
+
 Extra:
 - [[inline, crossinline & noinline]]
 - [[Understanding Collections in Kotlin - Mutable, Immutable, Arrays, Lists, Maps, and Sets]]

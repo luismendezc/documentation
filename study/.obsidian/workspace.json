@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "0a568958d2a28f8c",
+        "id": "54cbcebc9c4b129e",
         "type": "tabs",
         "children": [
           {
-            "id": "0b3c0d0ad5d23a22",
+            "id": "940c9ffe296ad1ed",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
+                "file": "Android/Network/Retrofit.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "How to connect to Amazon EC2 with ssh"
+              "title": "Retrofit"
             }
           }
         ]
@@ -159,11 +159,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0b3c0d0ad5d23a22",
+  "active": "940c9ffe296ad1ed",
   "lastOpenFiles": [
+    "Android/Android development.md",
+    "Android/Network/Retrofit.md",
+    "Android/Network",
+    "1_Assets",
+    "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
     "System Administration/AWS/No use root account for AWS use users.md",
     "Cloud Computing/Setup apache server with php page in Virtual Box Machine and NAT adapter.md",
-    "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
     "iOS/Environment Management in Xcode Using “.xcconfig” Files.md",
     "Welcome.md",
     "iOS",
@@ -175,6 +179,6 @@
     "IMPORTANT.md",
     "AWS Cloud Practitioner (CLF-C02)/1 - Cloud Computing.md",
     "AWS Cloud Practitioner (CLF-C02)/AWS Cloud Practitioner Index.md",
-    "pdf/Cloud_Computing_DevOps_y_DevOps_Culture.pdf"
+    "1_Assets/pdf/Cloud_Computing_DevOps_y_DevOps_Culture.pdf"
   ]
 }

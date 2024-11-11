@@ -145,7 +145,7 @@ class MainActivity : ComponentActivity() {
         }    }  
 }
 ```
-![video|100x100](videos/rotatingBox.mp4)
+![video|100x100](rotatingBox.mp4)
 
 
 Extra.
