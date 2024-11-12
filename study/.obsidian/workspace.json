@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "dfb2baea085c4f6a",
+        "id": "dddc9b55ba5e885e",
         "type": "tabs",
         "children": [
           {
-            "id": "afcb71f3c567ff43",
+            "id": "1d46eab9da1cb8c1",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "1_Assets/pdf/AdministraciondeSistemasparalaCloud.pdf"
+                "file": "SSL Pinning Android  + Ubuntu + Apache 443  php.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "AdministraciondeSistemasparalaCloud"
+              "icon": "lucide-file",
+              "title": "SSL Pinning Android  + Ubuntu + Apache 443  php"
             }
           }
         ]
@@ -157,15 +159,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "afcb71f3c567ff43",
+  "active": "ba743f183c2dac18",
   "lastOpenFiles": [
+    "1_Assets/images/Cloud Computing/Pasted image 20241112194040.png",
+    "SSL Pinning Android  + Ubuntu + Apache 443  php.md",
+    "Cloud Computing/Setup apache server with php page in Virtual Box Machine and NAT adapter.md",
     "Android/Network/Retrofit.md",
+    "1_Assets/pdf/AdministraciondeSistemasparalaCloud.pdf",
     "Android/Android development.md",
     "Android/Network",
     "1_Assets",
     "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
     "System Administration/AWS/No use root account for AWS use users.md",
-    "Cloud Computing/Setup apache server with php page in Virtual Box Machine and NAT adapter.md",
     "iOS/Environment Management in Xcode Using “.xcconfig” Files.md",
     "Welcome.md",
     "iOS",
