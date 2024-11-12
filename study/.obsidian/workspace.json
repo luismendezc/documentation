@@ -4,21 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "54cbcebc9c4b129e",
+        "id": "dfb2baea085c4f6a",
         "type": "tabs",
         "children": [
           {
-            "id": "940c9ffe296ad1ed",
+            "id": "afcb71f3c567ff43",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "Android/Network/Retrofit.md",
-                "mode": "source",
-                "source": false
+                "file": "1_Assets/pdf/AdministraciondeSistemasparalaCloud.pdf"
               },
-              "icon": "lucide-file",
-              "title": "Retrofit"
+              "icon": "lucide-file-text",
+              "title": "AdministraciondeSistemasparalaCloud"
             }
           }
         ]
@@ -159,10 +157,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "940c9ffe296ad1ed",
+  "active": "afcb71f3c567ff43",
   "lastOpenFiles": [
-    "Android/Android development.md",
     "Android/Network/Retrofit.md",
+    "Android/Android development.md",
     "Android/Network",
     "1_Assets",
     "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
