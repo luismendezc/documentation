@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "91c7977e02144781",
+        "id": "8a15b70c2bece6cf",
         "type": "tabs",
         "children": [
           {
-            "id": "bc3b6e9cdc9918f9",
+            "id": "ca238ffcad1475d6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AWS php Server + github repo clone + UserData configuration + map to squarespace domain.md",
+                "file": "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AWS php Server + github repo clone + UserData configuration + map to squarespace domain"
+              "title": "Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth)"
             }
           }
         ]
@@ -159,14 +159,32 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bc3b6e9cdc9918f9",
+  "active": "ba743f183c2dac18",
   "lastOpenFiles": [
+    "1_Assets/images/Cloud Computing/Pasted image 20241120152535.png",
+    "1_Assets/images/Cloud Computing/Pasted image 20241120152454.png",
+    "1_Assets/images/Cloud Computing/Pasted image 20241120152417.png",
+    "Pasted image 20241120151809.png",
+    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth).md",
+    "1_Assets/images/Cloud Computing/Pasted image 20241120151756.png",
     "Cloud Computing/SSL Pinning Android  + Ubuntu + Apache 443  php.md",
-    "AWS php Server + github repo clone + UserData configuration + map to squarespace domain.md",
+    "Android app Compose + React native.md",
+    "AWS Cloud Practitioner (CLF-C02)/AWS Cloud Practitioner Index.md",
+    "AWS Cloud Practitioner (CLF-C02)/1 - Cloud Computing.md",
+    "Technology Information - Extra/Bitmaps, MIME.md",
+    "System Administration/WSL Windows.md",
+    "System Administration/Windows SSH.md",
+    "System Administration/Linux distributions.md",
+    "System Administration/Generating a new SSH key and adding it to the ssh-agent.md",
+    "System Administration/Automating with Shell Scripting.md",
+    "System Administration/Bash manual.md",
+    "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
+    "System Administration/AWS/No use root account for AWS use users.md",
+    "Cloud Computing/AWS php Server + github repo clone + UserData configuration + map to squarespace domain.md",
+    "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf",
     "1_Assets/pdf/CloudComputing",
-    "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
     "Cloud Computing/Setup apache server with php page in Virtual Box Machine and NAT adapter.md",
     "1_Assets/pdf/AdministraciondeSistemasparalaCloud.pdf",
     "1_Assets/images/Cloud Computing/Pasted image 20241112194544.png",
@@ -175,18 +193,12 @@
     "Android/Android development.md",
     "Android/Network",
     "1_Assets",
-    "System Administration/AWS/No use root account for AWS use users.md",
     "iOS/Environment Management in Xcode Using “.xcconfig” Files.md",
     "Welcome.md",
     "iOS",
     "Cloud Computing/Grafana.md",
     "Cloud Computing/Bash script to setup apache server and php.md",
-    "System Administration/Generating a new SSH key and adding it to the ssh-agent.md",
-    "System Administration/Automating with Shell Scripting.md",
-    "System Administration/Bash manual.md",
     "IMPORTANT.md",
-    "AWS Cloud Practitioner (CLF-C02)/1 - Cloud Computing.md",
-    "AWS Cloud Practitioner (CLF-C02)/AWS Cloud Practitioner Index.md",
     "1_Assets/pdf/Cloud_Computing_DevOps_y_DevOps_Culture.pdf"
   ]
 }
