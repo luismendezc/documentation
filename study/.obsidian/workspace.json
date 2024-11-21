@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth).md",
+                "file": "Cloud Computing/SSL Pinning Android  + Ubuntu + Apache 443  php.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth)"
+              "title": "SSL Pinning Android  + Ubuntu + Apache 443  php"
             }
           }
         ]
@@ -159,13 +159,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ba743f183c2dac18",
+  "active": "ca238ffcad1475d6",
   "lastOpenFiles": [
+    "Cloud Computing/AWS php Server + github repo clone + UserData configuration + map to squarespace domain.md",
+    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth).md",
     "1_Assets/images/Cloud Computing/Pasted image 20241120152535.png",
     "1_Assets/images/Cloud Computing/Pasted image 20241120152454.png",
     "1_Assets/images/Cloud Computing/Pasted image 20241120152417.png",
     "Pasted image 20241120151809.png",
-    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth).md",
     "1_Assets/images/Cloud Computing/Pasted image 20241120151756.png",
     "Cloud Computing/SSL Pinning Android  + Ubuntu + Apache 443  php.md",
     "Android app Compose + React native.md",
@@ -180,7 +181,6 @@
     "System Administration/Bash manual.md",
     "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
     "System Administration/AWS/No use root account for AWS use users.md",
-    "Cloud Computing/AWS php Server + github repo clone + UserData configuration + map to squarespace domain.md",
     "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf",

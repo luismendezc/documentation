@@ -47,9 +47,9 @@ spec:
         - name: KC_HTTPS_PORT
           value: "8443" # Explicitly configure HTTPS port
         - name: KC_HTTPS_CERTIFICATE_FILE
-          value: "/opt/keycloak/demo/certs/localhostcert.pem"
+          value: "/opt/keycloak/demo/certs/tls.crt"
         - name: KC_HTTPS_CERTIFICATE_KEY_FILE
-          value:  "/opt/keycloak/demo/certs/localhostkey.pem"
+          value:  "/opt/keycloak/demo/certs/tls.key"
       ports:
         - containerPort: 8443
       volumeMounts:
@@ -57,8 +57,8 @@ spec:
         mountPath: /opt/keycloak/demo/certs
   volumes:
   - name: certsvol
-    hostPath:
-      path: /Users/luis_mendez/repos/personal/obsidian/obsidian/kubernetes/keycloak/certs/        
+    secret:
+      secretName: my-tls-secret
 ---
 apiVersion: v1
 kind: Pod
