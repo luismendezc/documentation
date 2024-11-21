@@ -43,7 +43,7 @@ spec:
         - name: KC_BOOTSTRAP_ADMIN_PASSWORD
           value: "admin"
         - name: KC_HOSTNAME
-          value: "localhost"
+          value: "10.151.130.198"
         - name: KC_HTTPS_PORT
           value: "8443" # Explicitly configure HTTPS port
         - name: KC_HTTPS_CERTIFICATE_FILE
@@ -73,6 +73,6 @@ spec:
       imagePullPolicy: IfNotPresent # Use local image if available
       env:
         - name: KEYCLOAK_URL
-          value: "https://localhost:8443/auth" # Update URL to use HTTPS and match external port
+          value: "https://keycloak-service:8443/auth" # Update URL to use HTTPS and match external port
       ports:
         - containerPort: 3000
