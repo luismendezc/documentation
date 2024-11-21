@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-pod
+  labels:
+    app: postgres-pod
+spec:
+  containers:
+    - name: postgres
+      image: postgres:latest
+      env:
+        - name: POSTGRES_USER
+          value: "keycloak"
+        - name: POSTGRES_PASSWORD
+          value: "mypassword"
+        - name: POSTGRES_DB
+          value: "keycloak"
+      ports:
+        - containerPort: 5432
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: keycloak-pod
+  labels:
+    app: keycloak-pod
+spec:
+  containers:
+    - name: keycloak
+      image: custom-keycloak:latest
+      imagePullPolicy: IfNotPresent # Use local image if available
+      env:
+        - name: KC_DB
+          value: "postgres"
+        - name: KC_DB_URL
+          value: "jdbc:postgresql://postgres-service:5432/keycloak"
+        - name: KC_DB_USERNAME
+          value: "keycloak"
+        - name: KC_DB_PASSWORD
+          value: "mypassword"
+        - name: KC_BOOTSTRAP_ADMIN_USERNAME
+          value: "admin"
+        - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+          value: "admin"
+        - name: KC_HOSTNAME
+          value: "localhost"
+        - name: KC_HTTPS_PORT
+          value: "8443" # Explicitly configure HTTPS port
+        - name: KC_HTTPS_CERTIFICATE_FILE
+          value: "/opt/keycloak/demo/certs/localhostcert.pem"
+        - name: KC_HTTPS_CERTIFICATE_KEY_FILE
+          value:  "/opt/keycloak/demo/certs/localhostkey.pem"
+      ports:
+        - containerPort: 8443
+      volumeMounts:
+      - name: certsvol
+        mountPath: /opt/keycloak/demo/certs
+  volumes:
+  - name: certsvol
+    hostPath:
+      path: /Users/luis_mendez/repos/personal/obsidian/obsidian/kubernetes/keycloak/certs/        
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node-pod
+  labels:
+    app: node-pod
+spec:
+  containers:
+    - name: node-api
+      image: node-api:latest
+      imagePullPolicy: IfNotPresent # Use local image if available
+      env:
+        - name: KEYCLOAK_URL
+          value: "https://localhost:8443/auth" # Update URL to use HTTPS and match external port
+      ports:
+        - containerPort: 3000
