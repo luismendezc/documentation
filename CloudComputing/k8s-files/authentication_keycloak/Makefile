@@ -15,6 +15,7 @@ build-node:
 
 # Apply Kubernetes configurations
 up: build-keycloak build-node
+	kubectl create secret tls my-tls-secret   --cert=certs/localhostcert.pem   --key=.certs/localhostkey.pem
 	kubectl apply -f pod.yaml -f service.yaml
 
 # Apply Kubernetes configurations including Ingress
@@ -23,6 +24,7 @@ up-with-ingress: build-keycloak build-node
 
 # Delete Kubernetes resources
 down:
+    kubectl delete secret my-tls-secret
 	kubectl delete  -f pod.yaml -f service.yaml
 
 # Delete Kubernetes resources including Ingress
