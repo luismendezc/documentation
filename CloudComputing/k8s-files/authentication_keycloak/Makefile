@@ -24,7 +24,7 @@ up-with-ingress: build-keycloak build-node
 
 # Delete Kubernetes resources
 down:
-    kubectl delete secret my-tls-secret
+	kubectl delete secret my-tls-secret
 	kubectl delete  -f pod.yaml -f service.yaml
 
 # Delete Kubernetes resources including Ingress
