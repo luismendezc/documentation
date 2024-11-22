@@ -1,10 +1,16 @@
+### 0.Project diagrams
+![[Pasted image 20241121200352.png]]
 
 ## **1. Project structure**
 Create directory where the files will be located:
 /labAuthentication
 
+The below files already exists in the following path if you don't want to create them from scratch.
+documentation/CloudComputing/k8s-files/authentication_keycloak
+
 **Structure of the project:**
 .
+├── certs
 ├── Dockerfile
 ├── Makefile
 ├── ingress.yaml
@@ -22,6 +28,16 @@ Create directory where the files will be located:
 
 ## **2. Create files**
 Create all the files needed for the lab:
+Change directory to the certs folder
+create the certificate with the below command:
+Please note that we changed ip in the command to 10.151.130.198 that is the localhost of kike
+run the below command to create the certificates:
+```
+openssl req -newkey rsa:2048 -nodes -keyout localhostkey.pem -x509 -days 365 -out localhostcert.pem -subj '/CN=test.keycloak.org/O=Test Keycloak./C=US' -extensions EXT -config <( \
+echo -e "[dn]\nCN=test.keycloak.org\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:internal.oceloti.com,IP:10.151.130.198\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+```
+
+
 **Makefile (needed to automize the creation and deletion of the pod)**
 ```makefile
 # Define variables
@@ -33,38 +49,42 @@ POD_FILES=pod.yaml service.yaml
 
 # Build Keycloak Docker image
 build-keycloak:
-        docker build -t $(DOCKER_IMAGE_KEYCLOAK) .
+docker build -t $(DOCKER_IMAGE_KEYCLOAK) .
 
 # Build Node.js Docker image
 build-node:
-        docker build -t $(DOCKER_IMAGE_NODE) $(NODE_API_PATH)
+docker build -t $(DOCKER_IMAGE_NODE) $(NODE_API_PATH)
 
 # Apply Kubernetes configurations
 up: build-keycloak build-node
-        kubectl apply -f pod.yaml -f service.yaml
+kubectl create secret tls my-tls-secret --cert=certs/localhostcert.pem --key=.certs/localhostkey.pem
+kubectl apply -f pod.yaml -f service.yaml 
 
 # Apply Kubernetes configurations including Ingress
 up-with-ingress: build-keycloak build-node
-        kubectl apply -f pod.yaml -f service.yaml -f ingress.yaml
+kubectl apply -f pod.yaml -f service.yaml -f ingress.yaml
 
 # Delete Kubernetes resources
 down:
-        kubectl delete -f pod.yaml -f service.yaml
+kubectl delete secret my-tls-secret
+kubectl delete -f pod.yaml -f service.yaml 
 
 # Delete Kubernetes resources including Ingress
 down-with-ingress:
-        kubectl delete -f pod.yaml -f service.yaml -f ingress.yaml
+kubectl delete -f pod.yaml -f service.yaml -f ingress.yaml
 
 # Clean up dangling Docker images
 clean:
-        docker system prune -f
-
+docker system prune -f
 ```
 **Keycloak Dockerfile:**
 **Dockerfile**
 ```docker
 # Use the official Keycloak image as the base
 FROM quay.io/keycloak/keycloak:latest as builder
+
+#Change this ip with your host machine either windows or macos
+ENV HOST_MACHINE=10.151.130.198
 
 # Enable health and metrics
 ENV KC_HEALTH_ENABLED=true
@@ -75,11 +95,6 @@ ENV KC_DB=postgres
 
 WORKDIR /opt/keycloak
 
-# Generate a demo key store (not for production)
-RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 \
-    -dname "CN=server" -alias server \
-    -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
-
 # Optimize the Keycloak build
 RUN /opt/keycloak/bin/kc.sh build
 
@@ -88,12 +103,12 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
 # Set environment variables for PostgreSQL and Keycloak
 ENV KC_DB=postgres
-ENV KC_DB_URL=jdbc:postgresql://localhost:5432/keycloak
+ENV KC_DB_URL=jdbc:postgresql://postgres-service:5432/keycloak
 ENV KC_DB_USERNAME=keycloak
 ENV KC_DB_PASSWORD=mypassword
 ENV KC_BOOTSTRAP_ADMIN_USERNAME=admin
 ENV KC_BOOTSTRAP_ADMIN_PASSWORD=admin
-ENV KC_HOSTNAME=http://localhost:32080
+ENV KC_HOSTNAME=https://${HOST_MACHINE}:32080
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
 CMD ["start", "--optimized"]
@@ -105,9 +120,9 @@ CMD ["start", "--optimized"]
 apiVersion: v1
 kind: Pod
 metadata:
-  name: keycloak-lab
+  name: postgres-pod
   labels:
-    app: keycloak-lab
+    app: postgres-pod
 spec:
   containers:
     - name: postgres
@@ -121,7 +136,15 @@ spec:
           value: "keycloak"
       ports:
         - containerPort: 5432
-
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: keycloak-pod
+  labels:
+    app: keycloak-pod
+spec:
+  containers:
     - name: keycloak
       image: custom-keycloak:latest
       imagePullPolicy: IfNotPresent # Use local image if available
@@ -129,7 +152,7 @@ spec:
         - name: KC_DB
           value: "postgres"
         - name: KC_DB_URL
-          value: "jdbc:postgresql://localhost:5432/keycloak"
+          value: "jdbc:postgresql://postgres-service:5432/keycloak"
         - name: KC_DB_USERNAME
           value: "keycloak"
         - name: KC_DB_PASSWORD
@@ -139,18 +162,37 @@ spec:
         - name: KC_BOOTSTRAP_ADMIN_PASSWORD
           value: "admin"
         - name: KC_HOSTNAME
-          value: "localhost"
+          value: "10.151.130.198"
         - name: KC_HTTPS_PORT
           value: "8443" # Explicitly configure HTTPS port
+        - name: KC_HTTPS_CERTIFICATE_FILE
+          value: "/opt/keycloak/demo/certs/tls.crt"
+        - name: KC_HTTPS_CERTIFICATE_KEY_FILE
+          value:  "/opt/keycloak/demo/certs/tls.key"
       ports:
         - containerPort: 8443
-
+      volumeMounts:
+      - name: certsvol
+        mountPath: /opt/keycloak/demo/certs
+  volumes:
+  - name: certsvol
+    secret:
+      secretName: my-tls-secret
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node-pod
+  labels:
+    app: node-pod
+spec:
+  containers:
     - name: node-api
       image: node-api:latest
       imagePullPolicy: IfNotPresent # Use local image if available
       env:
         - name: KEYCLOAK_URL
-          value: "https://localhost:32080/auth" # Update URL to use HTTPS and match external port
+          value: "https://keycloak-service:8443/auth" # Update URL to use HTTPS and match external port
       ports:
         - containerPort: 3000
 
@@ -161,27 +203,46 @@ service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: keycloak-lab-service
+  name: keycloak-service
 spec:
   selector:
-    app: keycloak-lab
+    app: keycloak-pod
   ports:
-    - protocol: TCP
-      port: 5432
-      targetPort: 5432
-      nodePort: 30432
-      name: postgres-port
     - protocol: TCP
       port: 8443
       targetPort: 8443
       nodePort: 32080
       name: keycloak-https-port # Map Keycloak's HTTPS port
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-service
+spec:
+  selector:
+    app: node-pod
+  ports:
     - protocol: TCP
       port: 3000
       targetPort: 3000
       nodePort: 32030
       name: nodejs-port
-  type: NodePort
+  type: NodePort  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  selector:
+    app: postgres-pod
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+      name: postgres-port
+  type: ClusterIP  
 ```
 For the node application we will need this:
 node-api/Dockerfile
@@ -300,6 +361,13 @@ kubectl get ingress
 Command for entering in one machine like postgres database in our example:
 ```bash
 kubectl exec -it keycloak-lab -c postgres -- bash
+#this is to access a single pod:
+kubectl exec -it keycloak-pod -- bash
+#to see a secret:
+kubectl get secrets
+kubectl get secrets [secret-name] -o yaml
+#to see the logs of a pod for troubleshooting
+kubectl logs keycloak-pod
 ```
 
 Check if the database is correct:
