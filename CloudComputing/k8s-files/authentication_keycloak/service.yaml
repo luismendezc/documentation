@@ -41,3 +41,23 @@ spec:
       targetPort: 5432
       name: postgres-port
   type: ClusterIP  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mailhog-service
+spec:
+  selector:
+    app: mailhog-pod
+  ports:
+    - protocol: TCP
+      port: 1025 # SMTP Port
+      targetPort: 1025
+      nodePort: 32025
+      name: smtp-port
+    - protocol: TCP
+      port: 8025 # Web UI Port
+      targetPort: 8025
+      nodePort: 32026
+      name: web-ui-port
+  type: NodePort

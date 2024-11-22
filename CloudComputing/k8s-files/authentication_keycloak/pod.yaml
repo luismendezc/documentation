@@ -21,6 +21,20 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
+  name: mailhog-pod
+  labels:
+    app: mailhog-pod
+spec:
+  containers:
+    - name: mailhog
+      image: mailhog/mailhog:latest
+      ports:
+        - containerPort: 1025 # SMTP Port
+        - containerPort: 8025 # Web UI Port
+---
+apiVersion: v1
+kind: Pod
+metadata:
   name: keycloak-pod
   labels:
     app: keycloak-pod
@@ -50,6 +64,14 @@ spec:
           value: "/opt/keycloak/demo/certs/tls.crt"
         - name: KC_HTTPS_CERTIFICATE_KEY_FILE
           value:  "/opt/keycloak/demo/certs/tls.key"
+        - name: KC_EMAIL_HOST
+          value: "mailhog-service"  # Name of the MailHog service
+        - name: KC_EMAIL_PORT
+          value: "1025"             # MailHog SMTP port
+        - name: KC_EMAIL_FROM
+          value: "no-reply@test.keycloak.org"  # Sender email address
+        - name: KC_EMAIL_AUTH
+          value: "false"            # MailHog does not require authentication
       ports:
         - containerPort: 8443
       volumeMounts:
@@ -76,3 +98,4 @@ spec:
           value: "https://keycloak-service:8443/auth" # Update URL to use HTTPS and match external port
       ports:
         - containerPort: 3000
+

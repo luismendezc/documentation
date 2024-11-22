@@ -140,6 +140,20 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
+  name: mailhog-pod
+  labels:
+    app: mailhog-pod
+spec:
+  containers:
+    - name: mailhog
+      image: mailhog/mailhog:latest
+      ports:
+        - containerPort: 1025 # SMTP Port
+        - containerPort: 8025 # Web UI Port
+---
+apiVersion: v1
+kind: Pod
+metadata:
   name: keycloak-pod
   labels:
     app: keycloak-pod
@@ -169,6 +183,14 @@ spec:
           value: "/opt/keycloak/demo/certs/tls.crt"
         - name: KC_HTTPS_CERTIFICATE_KEY_FILE
           value:  "/opt/keycloak/demo/certs/tls.key"
+        - name: KC_EMAIL_HOST
+          value: "mailhog-service"  # Name of the MailHog service
+        - name: KC_EMAIL_PORT
+          value: "1025"             # MailHog SMTP port
+        - name: KC_EMAIL_FROM
+          value: "no-reply@test.keycloak.org"  # Sender email address
+        - name: KC_EMAIL_AUTH
+          value: "false"            # MailHog does not require authentication  
       ports:
         - containerPort: 8443
       volumeMounts:
@@ -243,6 +265,26 @@ spec:
       targetPort: 5432
       name: postgres-port
   type: ClusterIP  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mailhog-service
+spec:
+  selector:
+    app: mailhog-pod
+  ports:
+    - protocol: TCP
+      port: 1025 # SMTP Port
+      targetPort: 1025
+      nodePort: 32025
+      name: smtp-port
+    - protocol: TCP
+      port: 8025 # Web UI Port
+      targetPort: 8025
+      nodePort: 32026
+      name: web-ui-port
+  type: NodePort
 ```
 For the node application we will need this:
 node-api/Dockerfile
