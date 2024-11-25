@@ -4,21 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "acc70ecf9787fa31",
+        "id": "6737c97a2d3de77b",
         "type": "tabs",
         "children": [
           {
-            "id": "d6af5d82d251e713",
+            "id": "23c54b5a53dcf5c4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth).md",
+                "file": "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth)"
+              "title": "Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth)"
+            }
+          },
+          {
+            "id": "397796a42920a256",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cloud Computing/SSL Pinning Android  + Ubuntu + Apache 443  php.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SSL Pinning Android  + Ubuntu + Apache 443  php"
             }
           }
         ]
@@ -159,9 +173,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d6af5d82d251e713",
+  "active": "23c54b5a53dcf5c4",
   "lastOpenFiles": [
     "Cloud Computing/SSL Pinning Android  + Ubuntu + Apache 443  php.md",
+    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth).md",
+    "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
     "Cloud Computing/AWS php Server + github repo clone + UserData configuration + map to squarespace domain.md",
     "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth).md",
     "1_Assets/images/Cloud Computing/Pasted image 20241120152535.png",
@@ -181,7 +197,6 @@
     "System Administration/Bash manual.md",
     "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
     "System Administration/AWS/No use root account for AWS use users.md",
-    "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf",
     "1_Assets/pdf/CloudComputing",
