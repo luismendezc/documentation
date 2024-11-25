@@ -5,6 +5,7 @@
   <uses-permission android:name="android.permission.INTERNET"/>
 
   <application
+    android:name=".MyApp"
     android:networkSecurityConfig="@xml/network_security_config"
     android:allowBackup="true"
     android:dataExtractionRules="@xml/data_extraction_rules"
@@ -32,7 +33,7 @@
         <category android:name="android.intent.category.BROWSABLE" />
         <data
           android:scheme="https"
-          android:host="mywebsite.com"
+          android:host="10.151.130.198"
           android:path="/oauth2redirect" />
       </intent-filter>
 

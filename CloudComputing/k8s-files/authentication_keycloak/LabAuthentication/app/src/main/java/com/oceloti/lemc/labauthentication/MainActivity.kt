@@ -5,52 +5,91 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.compose.rememberNavController
+import com.oceloti.lemc.labauthentication.ui.NavigationGraph
+import com.oceloti.lemc.labauthentication.util.PKCEUtil
+import com.oceloti.lemc.labauthentication.viewmodel.AuthViewModel
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState) // Corrected parentheses
-    Log.d("MainActivity", "onCreate called")
+  private val authViewModel: AuthViewModel by viewModel()
 
-    // Check if the activity was launched with a redirect URI
-    val launchUri = intent?.data
-    Log.d("MainActivity", "Intent URI: $launchUri")
-    handleRedirect(launchUri)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContent {
+      NavigationGraph(
+        navController = rememberNavController(),
+        viewModel = authViewModel
+      )
+    }
+
+    // Handle redirect URI if present
+    handleRedirect(intent?.data)
   }
 
   override fun onNewIntent(intent: Intent) {
     super.onNewIntent(intent)
-    val data = intent?.data
-    if (data != null && data.host == "mywebsite.com") {
-      // Handle redirect logic
-      val code = data.getQueryParameter("code")
-      if (code != null) {
-        Log.d("MainActivity", "Authorization code received: $code")
-        // Exchange code for tokens
-      } else {
-        Log.e("MainActivity", "Authorization code missing")
-      }
-    }
+    handleRedirect(intent.data)
   }
 
+  /**
+   * Starts the OAuth flow by opening the browser via Custom Tabs.
+   */
+  fun startOAuthFlow() {
+    Log.d("MainActivity", "startOAuthFlow() called")
+    val codeVerifier = PKCEUtil.generateCodeVerifier()
+    val codeChallenge = PKCEUtil.generateCodeChallenge(codeVerifier)
+    authViewModel.setCodeVerifier(codeVerifier) // Store code_verifier for later use
 
+    val authUrl = "https://10.151.130.198:32080/realms/oauthrealm/protocol/openid-connect/auth" +
+        "?client_id=lab-authentication-client" +
+        "&response_type=code" +
+        "&redirect_uri=https://10.151.130.198/oauth2redirect" +
+        "&scope=openid" +
+        "&state=xyz123" +
+        "&code_challenge=$codeChallenge" +
+        "&code_challenge_method=S256"
+
+    openOAuthUrl(authUrl)
+  }
+
+  /**
+   * Opens the provided URL in a Custom Tab.
+   *
+   * @param authUrl The URL to open.
+   */
+  private fun openOAuthUrl(authUrl: String) {
+    val uri = Uri.parse(authUrl)
+    val customTabsIntent = CustomTabsIntent.Builder()
+      .setShowTitle(true)
+      .build()
+    customTabsIntent.launchUrl(this, uri)
+  }
+
+  /**
+   * Handles the redirect URI after the user completes the login in the browser.
+   *
+   * @param uri The redirect URI containing the authorization code.
+   */
   private fun handleRedirect(uri: Uri?) {
-    if (uri != null && uri.scheme == "https" && uri.host == "10.151.130.198") {
-      Log.d("MainActivity", "Redirect URI detected: $uri")
-
-      // Extract the authorization code
+    if (uri != null && uri.host == "10.151.130.198" && uri.path == "/oauth2redirect") {
       val code = uri.getQueryParameter("code")
-      val state = uri.getQueryParameter("state")
-
       if (code != null) {
-        Log.d("MainActivity", "Authorization code: $code")
-        // Exchange the code for tokens
+        Log.d("MainActivity", "Authorization code received: $code")
+        lifecycleScope.launch {
+          authViewModel.exchangeToken(code)
+        }
       } else {
-        Log.e("MainActivity", "Authorization code is missing in redirect URI")
+        Log.e("MainActivity", "Authorization code is missing")
       }
-    } else {
-      Log.d("MainActivity", "No valid redirect URI detected")
     }
   }
 
 }
+
+

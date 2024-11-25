@@ -1,5 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">10.151.130.198</domain>
-    </domain-config>
+<domain-config cleartextTrafficPermitted="false">
+    <domain includeSubdomains="true">10.151.130.198</domain>
+    <pin-set expiration="2025-12-31">
+        <pin digest="SHA-256">FhZkbP8aVB6NjcHwiSCl7loC1WzCZDPRixTX38QCmHc=</pin>
+    </pin-set>
+    <trust-anchors>
+        <certificates src="@raw/my_cert" />
+    </trust-anchors>
+</domain-config>
 </network-security-config>
+

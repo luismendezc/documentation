@@ -37,6 +37,10 @@ openssl req -newkey rsa:2048 -nodes -keyout localhostkey.pem -x509 -days 365 -ou
 echo -e "[dn]\nCN=test.keycloak.org\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:internal.oceloti.com,IP:10.151.130.198\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
 ```
 
+Get the pin for the Android App.
+```bash
+openssl x509 -in localhostcert.pem -pubkey | \ openssl pkey -pubin -outform DER | \ openssl dgst -sha256 -binary | \ base64
+```
 
 **Makefile (needed to automize the creation and deletion of the pod)**
 ```makefile
@@ -422,6 +426,8 @@ SELECT * FROM information_schema.tables;
 ```
 for exiting use  \q
 
+## **7. Android Implementation**
+Look LabAuthentication inside documentation\CloudComputing\k8s-files\authentication_keycloak
 
 # Final result:
 
