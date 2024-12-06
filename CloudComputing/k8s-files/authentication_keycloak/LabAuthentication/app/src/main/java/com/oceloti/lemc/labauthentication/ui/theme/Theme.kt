@@ -11,16 +11,36 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
-private val DarkColorScheme = darkColorScheme(
-  primary = Purple80,
-  secondary = PurpleGrey80,
-  tertiary = Pink80
+val DarkColorScheme = darkColorScheme(
+  primary = LabAuthenticationCyan ,
+  background = LabAuthenticationBlack,
+  surface = LabAuthenticationDarkGray,
+  secondary = LabAuthenticationWhite,
+  tertiary = LabAuthenticationWhite,
+  primaryContainer = LabAuthenticationCyan3,
+  onPrimary = LabAuthenticationBlack,
+  onBackground = LabAuthenticationWhite,
+  onSurface = LabAuthenticationWhite,
+  onSurfaceVariant = LabAuthenticationGray,
+  error = LabAuthenticationDarkRed,
+  errorContainer = LabAuthenticationDarkRed5
 )
 
+
+
 private val LightColorScheme = lightColorScheme(
-  primary = Purple40,
-  secondary = PurpleGrey40,
-  tertiary = Pink40
+  primary = LabAuthenticationCyan ,
+  background = LabAuthenticationBlack,
+  surface = LabAuthenticationDarkGray,
+  secondary = LabAuthenticationWhite,
+  tertiary = LabAuthenticationWhite,
+  primaryContainer = LabAuthenticationCyan3,
+  onPrimary = LabAuthenticationBlack,
+  onBackground = LabAuthenticationWhite,
+  onSurface = LabAuthenticationWhite,
+  onSurfaceVariant = LabAuthenticationGray,
+  error = LabAuthenticationDarkRed,
+  errorContainer = LabAuthenticationDarkRed5
 
   /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -37,7 +57,7 @@ private val LightColorScheme = lightColorScheme(
 fun LabAuthenticationTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),
   // Dynamic color is available on Android 12+
-  dynamicColor: Boolean = true,
+  dynamicColor: Boolean = false,
   content: @Composable () -> Unit
 ) {
   val colorScheme = when {

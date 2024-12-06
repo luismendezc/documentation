@@ -81,21 +81,3 @@ spec:
   - name: certsvol
     secret:
       secretName: my-tls-secret
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: node-pod
-  labels:
-    app: node-pod
-spec:
-  containers:
-    - name: node-api
-      image: node-api:latest
-      imagePullPolicy: IfNotPresent # Use local image if available
-      env:
-        - name: KEYCLOAK_URL
-          value: "https://keycloak-service:8443/auth" # Update URL to use HTTPS and match external port
-      ports:
-        - containerPort: 3000
-

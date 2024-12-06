@@ -1,17 +1,13 @@
-const express = require('express');
+require("dotenv").config();
+const express = require("express");
+const router = require("./src/routes");
+
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
-// Health check endpoint
-app.get('/', (req, res) => {
-    res.send('Hello from Node.js API!');
-});
+app.use(express.json());
+app.use("/api", router);
 
-// Example secured endpoint
-app.get('/secure', (req, res) => {
-    res.send('This is a secured route!');
-});
-
-app.listen(port, () => {
-    console.log(`Node.js API running at http://localhost:${port}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log("Server running on http://0.0.0.0:3000");
 });

@@ -16,21 +16,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-service
-spec:
-  selector:
-    app: node-pod
-  ports:
-    - protocol: TCP
-      port: 3000
-      targetPort: 3000
-      nodePort: 32030
-      name: nodejs-port
-  type: NodePort  
----
-apiVersion: v1
-kind: Service
-metadata:
   name: postgres-service
 spec:
   selector:
@@ -39,8 +24,9 @@ spec:
     - protocol: TCP
       port: 5432
       targetPort: 5432
+      nodePort: 32081
       name: postgres-port
-  type: ClusterIP  
+  type: NodePort
 ---
 apiVersion: v1
 kind: Service

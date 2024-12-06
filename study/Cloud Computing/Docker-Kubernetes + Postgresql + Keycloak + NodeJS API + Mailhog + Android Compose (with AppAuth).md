@@ -1,7 +1,7 @@
-### 0.Project diagrams
+### Project diagrams
 ![[Pasted image 20241121200352.png]]
 
-## **1. Project structure**
+## **- Project structure**
 Create directory where the files will be located:
 /labAuthentication
 
@@ -11,23 +11,31 @@ documentation/CloudComputing/k8s-files/authentication_keycloak
 **Structure of the project:**
 .
 ├── certs
+│     ├── localhostcert
+│     ├── localhostcert.pem
+│     └── localhostkey.pem
 ├── Dockerfile
 ├── Makefile
-├── ingress.yaml
+├── LabAuthentication
+│     └──ANDROID CONTENT
 ├── node-api
-│   ├── Dockerfile
 │   ├── index.js
 │   ├── node_modules
-│   │  .
-│   │  .
-│   │  .
+│   │   └── ALL NODE MODULES
+│   ├── src
+│   │   └── NODE APP CONTENT
 │   ├── package-lock.json
 │   └── package.json
+├── scripts
+│   ├──create_keycloak_client.ps1
+│   └──seed.sql
 ├── pod.yaml
-├── service.yaml
+└── service.yaml
 
-## **2. Create files**
+## **- Create files**
+
 Create all the files needed for the lab:
+
 Change directory to the certs folder
 create the certificate with the below command:
 Please note that we changed ip in the command to 10.151.130.198 that is the localhost of kike
@@ -47,39 +55,35 @@ openssl x509 -in localhostcert.pem -pubkey | \ openssl pkey -pubin -outform DER 
 # Define variables
 DOCKER_IMAGE_KEYCLOAK=custom-keycloak:latest
 DOCKER_IMAGE_NODE=node-api:latest
-NODE_API_PATH=node-api # Subdirectory for Node.js API
 
 POD_FILES=pod.yaml service.yaml
 
 # Build Keycloak Docker image
 build-keycloak:
-docker build -t $(DOCKER_IMAGE_KEYCLOAK) .
+	docker build -t $(DOCKER_IMAGE_KEYCLOAK) .
 
 # Build Node.js Docker image
 build-node:
-docker build -t $(DOCKER_IMAGE_NODE) $(NODE_API_PATH)
+	docker build -t $(DOCKER_IMAGE_NODE) $(NODE_API_PATH)
 
 # Apply Kubernetes configurations
-up: build-keycloak build-node
-kubectl create secret tls my-tls-secret --cert=certs/localhostcert.pem --key=.certs/localhostkey.pem
-kubectl apply -f pod.yaml -f service.yaml 
-
-# Apply Kubernetes configurations including Ingress
-up-with-ingress: build-keycloak build-node
-kubectl apply -f pod.yaml -f service.yaml -f ingress.yaml
+up: build-keycloak
+	kubectl create secret tls my-tls-secret   --cert=certs/localhostcert.pem   --key=certs/localhostkey.pem
+	kubectl apply -f pod.yaml -f service.yaml
 
 # Delete Kubernetes resources
 down:
-kubectl delete secret my-tls-secret
-kubectl delete -f pod.yaml -f service.yaml 
-
-# Delete Kubernetes resources including Ingress
-down-with-ingress:
-kubectl delete -f pod.yaml -f service.yaml -f ingress.yaml
+	kubectl delete secret my-tls-secret
+	kubectl delete secret keycloak-client-secret
+	kubectl delete  -f pod.yaml -f service.yaml
 
 # Clean up dangling Docker images
 clean:
-docker system prune -f
+	docker system prune -f
+
+# Populate the database
+seed-db:
+	kubectl exec -it postgres-pod -- psql -U keycloak -d keycloak -c "/scripts/seed.sql"
 ```
 **Keycloak Dockerfile:**
 **Dockerfile**
@@ -194,7 +198,7 @@ spec:
         - name: KC_EMAIL_FROM
           value: "no-reply@test.keycloak.org"  # Sender email address
         - name: KC_EMAIL_AUTH
-          value: "false"            # MailHog does not require authentication  
+          value: "false"            # MailHog does not require authentication
       ports:
         - containerPort: 8443
       volumeMounts:
@@ -204,24 +208,6 @@ spec:
   - name: certsvol
     secret:
       secretName: my-tls-secret
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: node-pod
-  labels:
-    app: node-pod
-spec:
-  containers:
-    - name: node-api
-      image: node-api:latest
-      imagePullPolicy: IfNotPresent # Use local image if available
-      env:
-        - name: KEYCLOAK_URL
-          value: "https://keycloak-service:8443/auth" # Update URL to use HTTPS and match external port
-      ports:
-        - containerPort: 3000
-
 ```
 Service to configure the ports:
 service.yaml
@@ -238,23 +224,8 @@ spec:
       port: 8443
       targetPort: 8443
       nodePort: 32080
-      name: keycloak-https-port # Map Keycloak's HTTPS port
+      name: keycloak-https-port 
   type: NodePort
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: node-service
-spec:
-  selector:
-    app: node-pod
-  ports:
-    - protocol: TCP
-      port: 3000
-      targetPort: 3000
-      nodePort: 32030
-      name: nodejs-port
-  type: NodePort  
 ---
 apiVersion: v1
 kind: Service
@@ -267,8 +238,9 @@ spec:
     - protocol: TCP
       port: 5432
       targetPort: 5432
+      nodePort: 32081
       name: postgres-port
-  type: ClusterIP  
+  type: NodePort
 ---
 apiVersion: v1
 kind: Service
@@ -290,87 +262,37 @@ spec:
       name: web-ui-port
   type: NodePort
 ```
+
 For the node application we will need this:
-node-api/Dockerfile
-Dockerfile (for node application):
-```docker
-# Use the latest Node.js image
-FROM node:14
-
-# Set the working directory inside the container
-WORKDIR /app
-
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
-COPY . .
-
-# Expose the app's port
-EXPOSE 3000
-
-# Command to start the application
-CMD ["npm", "start"]
-```
-
-index.js (Application):
-```js
-const express = require('express');
-const app = express();
-const port = 3000;
-
-// Health check endpoint
-app.get('/', (req, res) => {
-    res.send('Hello from Node.js API!');
-});
-
-// Example secured endpoint
-app.get('/secure', (req, res) => {
-    res.send('This is a secured route!');
-});
-
-app.listen(port, () => {
-    console.log(`Node.js API running at http://localhost:${port}`);
-});
-```
-
-package.json
-```json
-{
-  "name": "node-api",
-  "version": "1.0.0",
-  "description": "Node.js API for authentication lab",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "express": "^4.17.1"
-  }
-}
-```
-
 **You need to run the following command to have the setup correctly of the node app**
 ```bash
 npm install
 ```
 
-(!) If you see the node_modules then that means that it worked fine.
+We have to also change the client secret and add it to the .env that will come later in this docu.
 
-## **3. Install make in your WSL (ubuntu in windows in my case)**
+
+## **- Install make in your WSL (ubuntu in windows in my case)**
 Install make if not already installed (this will help to run the Makefile with the automation for starting the pod of kubernetes):
 ```bash
 apt install make
 ```
 
-## **4. Docker Desktop + Kubernetes**
+###  Install JQ in ubuntu
+```bash
+sudo apt-get install -y jq
+```
+### Install JQ in Windows
+https://jqlang.github.io/jq/download/
+```powershell
+winget install jqlang.jq
+```
+
+## **- Docker Desktop + Kubernetes**
 Start Docker Desktop and start the Kubernetes service.
 ![[Pasted image 20241120151756.png]]
 
-## **5. Run the Makefile**
+## **- Run the Makefile**
 For starting you need to use the following command:
 ```bash
 make up
@@ -381,61 +303,266 @@ and for removing the pod you need the following:
 make down
 ```
 
-By the way the images will be still there so if you want you can delete them.
+By the way the images could still be there so if you want you can delete them.
 
-## **6. Check if worked right**
+## **-  Check if pod creation worked right**
 
 ```bash
 kubectl get pods
 ```
-Result:
-NAME           READY   STATUS    RESTARTS   AGE
-keycloak-lab   3/3     Running   0          73m
-
 ```bash
 kubectl get services
 ```
-NAME                   TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)                                        AGE keycloak-lab-service   NodePort    10.105.173.5   none   5432:30432/TCP,8443:32080/TCP,3000:32030/TCP   74m kubernetes             ClusterIP   10.96.0.1      none        443/TCP                                        17h
-
-Not used in this project!
 ```bash
-kubectl get ingress
+kubectl logs <pod-name>
 ```
 
+## **-Create the Keycloak clients**
 
-#### Extra
-Command for entering in one machine like postgres database in our example:
-```bash
-kubectl exec -it keycloak-lab -c postgres -- bash
-#this is to access a single pod:
-kubectl exec -it keycloak-pod -- bash
-#to see a secret:
-kubectl get secrets
-kubectl get secrets [secret-name] -o yaml
-#to see the logs of a pod for troubleshooting
-kubectl logs keycloak-pod
+Once keycloak is up and running under:
+https://10.151.130.198:32080/
+
+##### Create the REALM oauthrealm
+Access with these credentials
+user: **admin**
+password: **admin**
+![[Pasted image 20241206191813.png]]
+##### Create admin user for oauthrealm
+
+Username: admin
+Email: admin@gmail.com
+First name: admin
+Last name: admin
+
+Credentials: admin (No temporary)
+
+Role mapping:
+- realm-management   realm-admin
+- default-roles-oauthrealm
+
+##### Create the client "node-api" and enable secrets this for the node app:
+To create need to be under windows as:
+```powershell
+.\create_keycloak_client.ps1
+```
+```powershell
+# Disable SSL certificate validation
+[System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $true }
+
+# Set Keycloak URL based on environment
+if ($env:COMPUTERNAME -like "*keycloak*") {
+    # Internal cluster communication
+    $KeycloakUrl = "https://keycloak-service:8443/auth"
+} else {
+    # External host communication (NodePort)
+    $KeycloakUrl = "https://10.151.130.198:32080"
+}
+
+# Environment variables
+$Realm = "oauthrealm"
+$AdminUser = "admin"
+$AdminPass = "admin"
+$ClientId = "node-api"
+
+# Delete existing secret if it exists
+Write-Host "Checking if the secret exists..."
+$SecretExists = kubectl get secret keycloak-client-secret -o json 2>$null
+if ($?) {
+    Write-Host "Deleting existing secret..."
+    kubectl delete secret keycloak-client-secret
+}
+
+
+# Authenticate with Keycloak
+Write-Host "Requesting admin token from $KeycloakUrl..."
+$TokenResponse = Invoke-RestMethod -Method POST -Uri "$KeycloakUrl/realms/$Realm/protocol/openid-connect/token" `
+    -Headers @{ "Content-Type" = "application/x-www-form-urlencoded" } `
+    -Body @{ "username" = $AdminUser; "password" = $AdminPass; "grant_type" = "password"; "client_id" = "admin-cli" }
+
+if (-not $TokenResponse.access_token) {
+    Write-Host "Failed to retrieve admin token. Check Keycloak URL or admin credentials." -ForegroundColor Red
+    exit 1
+}
+
+$Token = $TokenResponse.access_token
+
+# Check if the client already exists
+Write-Host "Checking if client '$ClientId' exists..."
+$ClientResponse = Invoke-RestMethod -Method GET -Uri "$KeycloakUrl/admin/realms/$Realm/clients?clientId=$ClientId" `
+    -Headers @{ "Authorization" = "Bearer $Token"; "Content-Type" = "application/json" }
+
+if ($ClientResponse.Count -eq 0) {
+    Write-Host "Client '$ClientId' does not exist. Creating it..."
+    Invoke-RestMethod -Method POST -Uri "$KeycloakUrl/admin/realms/$Realm/clients" `
+        -Headers @{ "Authorization" = "Bearer $Token"; "Content-Type" = "application/json" } `
+        -Body (@{
+            clientId = $ClientId
+            enabled = $true
+            protocol = "openid-connect"
+            publicClient = $false
+            serviceAccountsEnabled = $true
+        } | ConvertTo-Json -Depth 10)
+} else {
+    Write-Host "Client '$ClientId' already exists."
+}
+
+# Fetch the client ID
+$ClientIdResponse = $ClientResponse | Where-Object { $_.clientId -eq $ClientId }
+$ClientIdUUID = $ClientIdResponse.id
+
+if (-not $ClientIdUUID) {
+    Write-Host "Failed to retrieve client ID for '$ClientId'." -ForegroundColor Red
+    exit 1
+}
+
+# Fetch the client secret
+Write-Host "Fetching client secret for '$ClientId'..."
+$SecretResponse = Invoke-RestMethod -Method GET -Uri "$KeycloakUrl/admin/realms/$Realm/clients/$ClientIdUUID/client-secret" `
+    -Headers @{ "Authorization" = "Bearer $Token"; "Content-Type" = "application/json" }
+
+if (-not $SecretResponse.value) {
+    Write-Host "Failed to retrieve client secret." -ForegroundColor Red
+    exit 1
+}
+
+$ClientSecret = $SecretResponse.value
+Write-Host "Client Secret for '$ClientId': $ClientSecret"
+
+# Save the client secret as a Kubernetes secret
+Write-Host "Saving client secret to Kubernetes..."
+kubectl create secret generic keycloak-client-secret --from-literal=client-secret=$ClientSecret --dry-run=client -o yaml | kubectl apply -f -
 ```
 
-Check if the database is correct:
+To delete if you want (alredy included with make down)
+```bash
+kubectl delete secret keycloak-client-secret
+```
+
+Create if you get the secret manually:
+```bash
+kubectl create secret generic keycloak-client-secret \
+  --from-literal=client-secret=<secret>
+```
+
+##### Create the client manually for the mobile app this is without secrets
+
+Client creation wizard:
+Client type: OpenID Connect
+CLIENT ID: lab-authentication-client
+Client authentication: off
+Authentication flow: Standard flow, Direct access grants
+Valid redirect URIs: https://10.151.130.198/oauth2redirect
+
+Once created:
+Access Token Lifespan : Expires in 7 Minutes
+Proof Key for Code Exchange Code Challenge Method: S256
+
+### **- Setting Up PostgreSQL Tables**
+
+##### **Option A. Connecting to PostgreSQL in the Pod**
+
+To initialize the database with tables and pre-filled data:
+
+1. **Access the PostgreSQL Pod**:
+```bash
+kubectl exec -it postgres-pod -- psql -U keycloak -d keycloak
+```
+
+2. **Create the Tables**: Run the following SQL script inside the PostgreSQL shell:
+
+```sql
+-- Create the stores table 
+CREATE TABLE stores ( 
+store_id SERIAL PRIMARY KEY, 
+name VARCHAR(255) NOT NULL, 
+location VARCHAR(255) NOT NULL ); 
+-- Create the sales table 
+CREATE TABLE sales ( 
+sale_id SERIAL PRIMARY KEY, 
+user_id VARCHAR(255) NOT NULL, 
+product_id INT NOT NULL, 
+status VARCHAR(50) NOT NULL, 
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ); 
+-- Insert sample data into stores 
+INSERT INTO stores (name, location) VALUES 
+('Candy Shop', '123 Sweet St'), 
+('Cake House', '456 Dessert Dr'), 
+('Choco World', '789 Cocoa Ln');
+
+GRANT CONNECT ON DATABASE keycloak TO keycloak;
+```
+3.  **Exit the Shell**:
+    `\q`
+
+##### **Option B. Using seed.sql script**
+
+To copy the script to the postgres pod:
+```bash
+kubectl cp seed.sql postgres-pod:/seed.sql
+```
+Enter the pod with bash interface:
+```bash
+kubectl exec -it postgres-pod -i bash
+```
+Run the script from inside the pod:
+```bash
+psql -U keycloak -d keycloak -f /seed.sql
+```
+If want to acces the plsql use:
 ```bash
 psql -U keycloak -d keycloak
 ```
-query:
-```sql
-SELECT * FROM information_schema.tables;
+Grant access to keycloak user:
+```bash
+GRANT CONNECT ON DATABASE keycloak TO keycloak;
 ```
-for exiting use  \q
 
 ## **7. Android Implementation**
 Look LabAuthentication inside documentation\CloudComputing\k8s-files\authentication_keycloak
+## **8. Node JS Implementation**
+Since the API is private, you'll need a Keycloak client that uses **client credentials** with a secret:
+
+modify the .env file to use the correct values:
+
+KEYCLOAK_URL=https://10.151.130.198:32080
+KEYCLOAK_REALM=oauthrealm
+CLIENT_ID=node-api
+CLIENT_SECRET=<change_this>
+
+
+POSTGRES_USER=keycloak
+POSTGRES_PASSWORD=mypassword
+POSTGRES_DB=keycloak
+POSTGRES_HOST=10.151.130.198
+POSTGRES_PORT=32081
+
+Once the .env is ready then run this:
+```bash
+npm start
+```
+the server is on:
+10.151.130.198:3000
+### Simulate token access with node app:
+
+```bash
+curl -k -X POST "https://10.151.130.198:32080/realms/oauthrealm/protocol/openid-connect/token"   -H "Content-Type: application/x-www-form-urlencoded"   -d "client_id=node-api"   -d "client_secret=<secret>"   -d "grant_type=client_credentials"
+```
+```bash
+curl -k -X GET "http://10.151.130.198:3000/api/secure" \
+  -H "Authorization: Bearer <VALID_ACCESS_TOKEN>"
+```
+
+## IMPORTANT COMMANDS AND NOTICES
+adb shell am start -W -a android.intent.action.VIEW -d "https://10.151.130.198/oauth2redirect"
+
+openssl pkcs12 -export -in localhostcert.pem -inkey localhostkey.pem -out localhostcert.p12 -name "Localhost Certificate" -passout pass:your_password
+
+Remember register the app link in the app settings very important
 
 # Final result:
 
 Postgres machine:
 ![[Pasted image 20241120152417.png]]
-
-Node API machine:
-![[Pasted image 20241120152454.png]]
 
 Keycloak machine (user: admin, password: admin):
 ![[Pasted image 20241120152535.png]]

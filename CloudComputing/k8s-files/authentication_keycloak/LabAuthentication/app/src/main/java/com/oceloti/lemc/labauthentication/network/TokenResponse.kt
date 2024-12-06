@@ -41,3 +41,13 @@ data class TokenResponse(
   @SerializedName("token_type") val tokenType: String,
   @SerializedName("expires_in") val expiresIn: Int
 )
+
+fun TokenResponse.toLabToken(): LabToken {
+  return LabToken(
+    accessToken = this.accessToken,
+    refreshToken = this.refreshToken,
+    idToken = this.idToken,
+    tokenType = this.tokenType,
+    expiresIn = this.expiresIn
+  )
+}

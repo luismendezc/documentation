@@ -1,54 +1,86 @@
 package com.oceloti.lemc.labauthentication.viewmodel
 
 import android.util.Log
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.oceloti.lemc.labauthentication.network.TokenResponse
-import com.oceloti.lemc.labauthentication.repository.AuthRepository
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import androidx.lifecycle.viewModelScope
+import com.oceloti.lemc.labauthentication.network.CodeVerifier
+import com.oceloti.lemc.labauthentication.ui.auth.AuthAction
+import com.oceloti.lemc.labauthentication.util.PKCEUtil
+import com.oceloti.lemc.labauthentication.viewmodel.events.AuthEvent
+import com.oceloti.lemc.labauthentication.viewmodel.states.AuthState
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 
-class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
+class AuthViewModel(
+  private val oidcCodeVerifier: CodeVerifier
+): ViewModel() {
 
-  private val _tokens = MutableStateFlow<TokenResponse?>(null)
-  val tokens = _tokens.asStateFlow()
+  var state by mutableStateOf(AuthState())
+    private set
 
-  private val _navigateToTokenScreen = MutableStateFlow(false)
-  val navigateToTokenScreen = _navigateToTokenScreen.asStateFlow()
+  private val eventChannel = Channel<AuthEvent>()
+  val events = eventChannel.receiveAsFlow()
 
-  private var codeVerifier: String? = null
-
-  fun setCodeVerifier(verifier: String) {
-    Log.d("AuthViewModel", "Code verifier set: $verifier")
-    codeVerifier = verifier
-  }
-
-  suspend fun exchangeToken(code: String): TokenResponse? {
-    val verifier = codeVerifier
-    if (verifier == null) {
-      Log.e("AuthViewModel", "Code verifier is missing")
-      return null
-    }
-
-    return try {
-      Log.d("AuthViewModel", "Exchanging token for code: $code")
-      val response = repository.exchangeToken(
-        code = code,
-        redirectUri = "https://10.151.130.198/oauth2redirect",
-        codeVerifier = verifier
-      )
-      _tokens.value = response
-      _navigateToTokenScreen.value = true // Set navigation flag
-      response
-    } catch (e: Exception) {
-      Log.e("AuthViewModel", "Error during token exchange: ${e.message}")
-      null
+  fun onAction(action: AuthAction){
+    when(action){
+      AuthAction.OnSignInClick -> {
+        state.copy(isLoginInProgress = true)
+        startOAuthLoginFlow()
+      }
+      AuthAction.OnSignUpClick -> {
+        state.copy(isRegisterInProgress = true)
+        startOAuthRegisterFlow()
+      }
     }
   }
 
-  fun resetNavigationState() {
-    _navigateToTokenScreen.value = false
+  fun enableLogin(){
+    state.copy(isLoginInProgress = false)
   }
+  fun enableRegister(){
+    state.copy(isRegisterInProgress = false)
+  }
+
+  /**
+   * Starts the OAuth flow by opening the browser via Custom Tabs.
+   */
+  fun startOAuthLoginFlow() {
+    Log.d(TAG, "startOAuthFlow() called")
+    val codeVerifier = PKCEUtil.generateCodeVerifier()
+    val codeChallenge = PKCEUtil.generateCodeChallenge(codeVerifier)
+
+    // Store codeVerifier for later use
+    oidcCodeVerifier.setCodeVerifier(codeVerifier)
+
+    // TODO: Secure this links and make them reusable for different cases
+    val authUrl = "https://10.151.130.198:32080/realms/oauthrealm/protocol/openid-connect/auth" +
+        "?client_id=lab-authentication-client" +
+        "&response_type=code" +
+        "&redirect_uri=https://10.151.130.198/oauth2redirect" +
+        "&scope=openid" +
+        "&state=xyz123" +
+        "&code_challenge=$codeChallenge" +
+        "&code_challenge_method=S256"
+
+    Log.d("HOLA", authUrl)
+    // Send to chanel
+    viewModelScope.launch {
+      eventChannel.send(AuthEvent.OauthLoginUrlGenerated(
+        url = authUrl
+      ))
+    }
+  }
+
+  private fun startOAuthRegisterFlow(){
+
+  }
+
+  companion object {
+    private val TAG = "AuthViewModel"
+  }
+
 }
-
-
-

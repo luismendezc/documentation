@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "6737c97a2d3de77b",
+        "id": "c086d1ee42ff0326",
         "type": "tabs",
         "children": [
           {
-            "id": "23c54b5a53dcf5c4",
+            "id": "87f4f43fffa5b5b8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,20 +19,6 @@
               },
               "icon": "lucide-file",
               "title": "Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth)"
-            }
-          },
-          {
-            "id": "397796a42920a256",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cloud Computing/SSL Pinning Android  + Ubuntu + Apache 443  php.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "SSL Pinning Android  + Ubuntu + Apache 443  php"
             }
           }
         ]
@@ -173,18 +159,29 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "23c54b5a53dcf5c4",
+  "active": "87f4f43fffa5b5b8",
   "lastOpenFiles": [
-    "Cloud Computing/SSL Pinning Android  + Ubuntu + Apache 443  php.md",
-    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth).md",
-    "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
-    "Cloud Computing/AWS php Server + github repo clone + UserData configuration + map to squarespace domain.md",
-    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth).md",
     "1_Assets/images/Cloud Computing/Pasted image 20241120152535.png",
-    "1_Assets/images/Cloud Computing/Pasted image 20241120152454.png",
-    "1_Assets/images/Cloud Computing/Pasted image 20241120152417.png",
-    "Pasted image 20241120151809.png",
-    "1_Assets/images/Cloud Computing/Pasted image 20241120151756.png",
+    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth).md",
+    "Pasted image 20241206191828.png",
+    "1_Assets/images/LabAuthentication/Pasted image 20241206191813.png",
+    "1_Assets/images/Pasted image 20241108181139.png",
+    "1_Assets/images/LabAuthentication",
+    "1_Assets/images/Pasted image 20241019213938.png",
+    "1_Assets/images/LabAuthentication/Pasted image 20241121200352.png",
+    "Cloud Computing/AWS php Server + github repo clone + UserData configuration + map to squarespace domain.md",
+    "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
+    "Android/HackerRank/2 - Mini-Max Sum.md",
+    "Android/HackerRank/1 - Plus Minus.md",
+    "Android/HackerRank/images/1 - Plus Minus - 2image.png",
+    "Android/HackerRank/images/1 - Plus Minus - 1image.png",
+    "Android/HackerRank/images/2 - Mini-Max Sum - 1image.png",
+    "Android/HackerRank/images/2 - Mini-Max Sum - 2image.png",
+    "Android/HackerRank/images",
+    "Android/HackerRank/11-2024_LuisEnriqueMendezCantero_Resume.pdf",
+    "Android/HackerRank",
+    "Cloud Computing/SSL Pinning Android  + Ubuntu + Apache 443  php.md",
+    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth).md",
     "Android app Compose + React native.md",
     "AWS Cloud Practitioner (CLF-C02)/AWS Cloud Practitioner Index.md",
     "AWS Cloud Practitioner (CLF-C02)/1 - Cloud Computing.md",
@@ -202,18 +199,12 @@
     "1_Assets/pdf/CloudComputing",
     "Cloud Computing/Setup apache server with php page in Virtual Box Machine and NAT adapter.md",
     "1_Assets/pdf/AdministraciondeSistemasparalaCloud.pdf",
-    "1_Assets/images/Cloud Computing/Pasted image 20241112194544.png",
-    "1_Assets/images/Cloud Computing/Pasted image 20241112194040.png",
     "Android/Network/Retrofit.md",
     "Android/Android development.md",
     "Android/Network",
-    "1_Assets",
     "iOS/Environment Management in Xcode Using “.xcconfig” Files.md",
     "Welcome.md",
-    "iOS",
     "Cloud Computing/Grafana.md",
-    "Cloud Computing/Bash script to setup apache server and php.md",
-    "IMPORTANT.md",
-    "1_Assets/pdf/Cloud_Computing_DevOps_y_DevOps_Culture.pdf"
+    "Cloud Computing/Bash script to setup apache server and php.md"
   ]
 }
