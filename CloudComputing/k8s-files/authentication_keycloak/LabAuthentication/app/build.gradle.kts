@@ -61,6 +61,8 @@ dependencies {
   implementation("androidx.core:core-splashscreen:1.0.1")
   implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
   implementation("androidx.security:security-crypto-ktx:1.1.0-alpha06")
+  implementation("com.nimbusds:nimbus-jose-jwt:9.47")
+  implementation("org.bitbucket.b_c:jose4j:0.9.6")
 
   implementation(libs.browser)
   implementation("androidx.navigation:navigation-compose:2.8.4")

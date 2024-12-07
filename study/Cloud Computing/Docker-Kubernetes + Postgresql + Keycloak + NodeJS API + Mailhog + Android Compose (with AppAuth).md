@@ -44,6 +44,12 @@ run the below command to create the certificates:
 openssl req -newkey rsa:2048 -nodes -keyout localhostkey.pem -x509 -days 365 -out localhostcert.pem -subj '/CN=test.keycloak.org/O=Test Keycloak./C=US' -extensions EXT -config <( \
 echo -e "[dn]\nCN=test.keycloak.org\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:internal.oceloti.com,IP:10.151.130.198\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
 ```
+Create the certificate for the node app and put it on the node-api folder.
+```bash
+openssl req -newkey rsa:2048 -nodes -keyout nodeappkey.pem -x509 -days 365 -out nodeappcert.pem -subj '/CN=test.nodeapp.local/O=Test Node App./C=US' -extensions EXT -config <( \
+echo -e "[dn]\nCN=test.nodeapp.local\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:nodeapp.local,IP:10.151.130.198\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+```
+
 
 Get the pin for the Android App.
 ```bash
@@ -547,6 +553,7 @@ the server is on:
 ```bash
 curl -k -X POST "https://10.151.130.198:32080/realms/oauthrealm/protocol/openid-connect/token"   -H "Content-Type: application/x-www-form-urlencoded"   -d "client_id=node-api"   -d "client_secret=<secret>"   -d "grant_type=client_credentials"
 ```
+
 ```bash
 curl -k -X GET "http://10.151.130.198:3000/api/secure" \
   -H "Authorization: Bearer <VALID_ACCESS_TOKEN>"

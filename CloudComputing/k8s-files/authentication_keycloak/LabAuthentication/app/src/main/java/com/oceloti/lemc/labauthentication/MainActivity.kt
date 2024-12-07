@@ -13,9 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
-import com.oceloti.lemc.labauthentication.ui.NavigationRoot
-import com.oceloti.lemc.labauthentication.ui.theme.LabAuthenticationTheme
-import com.oceloti.lemc.labauthentication.viewmodel.MainViewModel
+import com.oceloti.lemc.labauthentication.presentation.ui.NavigationRoot
+import com.oceloti.lemc.labauthentication.presentation.ui.theme.LabAuthenticationTheme
+import com.oceloti.lemc.labauthentication.presentation.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,25 +27,25 @@ class MainActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
 
     installSplashScreen().apply {
-        setKeepOnScreenCondition {
-          mainViewModel.state.isCheckingAuth
-        }
+      setKeepOnScreenCondition {
+        mainViewModel.state.isCheckingAuth
+      }
     }
 
     setContent {
-      LabAuthenticationTheme(){
+      LabAuthenticationTheme {
         Surface(
           modifier = Modifier.fillMaxSize(),
           color = MaterialTheme.colorScheme.background
         ) {
           val state = mainViewModel.state
-           if(!state.isCheckingAuth){
-             val navController = rememberNavController()
-             NavigationRoot(
-               navController = navController,
-               isLoggedIn = state.isLoggedIn,
-             )
-           }
+          if (!state.isCheckingAuth) {
+            val navController = rememberNavController()
+            NavigationRoot(
+              navController = navController,
+              isLoggedIn = state.isLoggedIn,
+            )
+          }
         }
       }
     }

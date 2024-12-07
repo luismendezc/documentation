@@ -1,12 +1,12 @@
 package com.oceloti.lemc.labauthentication.network
 
 import android.content.Context
+import com.oceloti.lemc.labauthentication.R
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.security.KeyStore
 import java.security.cert.CertificateFactory
 import javax.net.ssl.SSLContext
-import com.oceloti.lemc.labauthentication.R
 import javax.net.ssl.TrustManagerFactory
 
 /**
@@ -24,13 +24,25 @@ import javax.net.ssl.TrustManagerFactory
  * @throws java.security.cert.CertificateException If the certificate format is invalid.
  * @throws javax.net.ssl.SSLException If there is an issue initializing the SSL context.
  */
-fun provideOkHttpClient(context: Context): OkHttpClient {
-  return OkHttpClient.Builder()
-    .addCustomSslConfig(context)
-    .addInterceptor(HttpLoggingInterceptor().apply {
-      level = HttpLoggingInterceptor.Level.BODY
-    })
-    .build()
+fun provideOkHttpClient(context: Context, authInterceptor: Lazy<AuthInterceptor>): OkHttpClient {
+  return try {
+    OkHttpClient.Builder()
+      .addCustomSslConfig(context)
+      .addInterceptor { chain -> authInterceptor.value.intercept(chain) } // Use lazy loading
+      .build()
+  } catch (e: Exception) {
+    throw IllegalStateException("Failed to build OkHttpClient: ${e.message}", e)
+  }
+}
+
+fun provideOkHttpClientAuth(context: Context): OkHttpClient {
+  return try {
+    OkHttpClient.Builder()
+      .addCustomSslConfig(context)
+      .build()
+  } catch (e: Exception) {
+    throw IllegalStateException("Failed to build OkHttpClient: ${e.message}", e)
+  }
 }
 
 /**
@@ -51,13 +63,21 @@ fun provideOkHttpClient(context: Context): OkHttpClient {
  */
 fun OkHttpClient.Builder.addCustomSslConfig(context: Context): OkHttpClient.Builder {
   val certificateFactory = CertificateFactory.getInstance("X.509")
-  val inputStream = context.resources.openRawResource(R.raw.my_cert)
-  val certificate = certificateFactory.generateCertificate(inputStream)
-  inputStream.close()
+
+  // Load Keycloak certificate
+  val keycloakCertInput = context.resources.openRawResource(R.raw.my_cert)
+  val keycloakCert = certificateFactory.generateCertificate(keycloakCertInput)
+  keycloakCertInput.close()
+
+  // Load Node.js certificate
+  val nodeCertInput = context.resources.openRawResource(R.raw.nodeappcert)
+  val nodeCert = certificateFactory.generateCertificate(nodeCertInput)
+  nodeCertInput.close()
 
   val keyStore = KeyStore.getInstance(KeyStore.getDefaultType()).apply {
     load(null)
-    setCertificateEntry("ca", certificate)
+    setCertificateEntry("keycloak", keycloakCert)
+    setCertificateEntry("nodeapp", nodeCert)
   }
 
   val trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
@@ -66,6 +86,19 @@ fun OkHttpClient.Builder.addCustomSslConfig(context: Context): OkHttpClient.Buil
   val sslContext = SSLContext.getInstance("TLS")
   sslContext.init(null, trustManagerFactory.trustManagers, null)
 
-  return this.sslSocketFactory(sslContext.socketFactory, trustManagerFactory.trustManagers[0] as javax.net.ssl.X509TrustManager)
+  return this.sslSocketFactory(
+    sslContext.socketFactory,
+    trustManagerFactory.trustManagers[0] as javax.net.ssl.X509TrustManager
+  )
 }
 
+
+
+/* DONT DELETE THIS THIS IS FOR THE LOGIC TO ADD A PIN AND ALLOW SSL PINNING
+<pin-set expiration="2025-12-31">
+        <pin digest="SHA-256">W0/dMbJ6RoHN9sq+V/Zs0hyBBXmQVCwqHbFMPSqJ/gA=</pin>
+    </pin-set>
+    <trust-anchors>
+        <certificates src="@raw/my_cert" />
+    </trust-anchors>
+ */

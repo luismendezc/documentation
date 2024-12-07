@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
+<!-- Keycloak Server Configuration -->
 <domain-config cleartextTrafficPermitted="false">
-    <domain includeSubdomains="true">10.151.130.198</domain>
-    <pin-set expiration="2025-12-31">
-        <pin digest="SHA-256">W0/dMbJ6RoHN9sq+V/Zs0hyBBXmQVCwqHbFMPSqJ/gA=</pin>
-    </pin-set>
-    <trust-anchors>
-        <certificates src="@raw/my_cert" />
-    </trust-anchors>
+  <domain includeSubdomains="true">10.151.130.198</domain>
+  <trust-anchors>
+    <certificates src="@raw/nodeappcert" />
+    <certificates src="@raw/my_cert" />
+  </trust-anchors>
 </domain-config>
 </network-security-config>
-
