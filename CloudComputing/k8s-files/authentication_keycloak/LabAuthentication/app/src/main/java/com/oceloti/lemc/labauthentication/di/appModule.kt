@@ -6,6 +6,7 @@ import com.oceloti.lemc.labauthentication.MyApp
 import com.oceloti.lemc.labauthentication.data.repository.AuthRepository
 import com.oceloti.lemc.labauthentication.data.repository.StoreRepository
 import com.oceloti.lemc.labauthentication.data.security.EncryptedSessionStorage
+import com.oceloti.lemc.labauthentication.data.security.SessionManager
 import com.oceloti.lemc.labauthentication.data.security.SessionStorage
 import com.oceloti.lemc.labauthentication.network.AuthInterceptor
 import com.oceloti.lemc.labauthentication.network.CodeVerifier
@@ -42,6 +43,14 @@ val appModule = module {
   }
 
   singleOf(::EncryptedSessionStorage).bind<SessionStorage>()
+
+  single {
+    SessionManager(
+      timeoutMillis = 1 * 60 * 1000L, // 1 minutes
+      scope = get() // inject the CoroutineScope provided above
+    )
+  }
+
 
 // DATA REPOSITORY
   single { StoreRepository(get()) }

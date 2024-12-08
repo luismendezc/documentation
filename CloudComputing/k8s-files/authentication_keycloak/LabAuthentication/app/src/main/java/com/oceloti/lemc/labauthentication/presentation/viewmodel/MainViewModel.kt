@@ -75,6 +75,29 @@ class MainViewModel(
     state = state.copy(isLoggedIn = isLoggedIn)
   }
 
+  fun logout(){
+    viewModelScope.launch {
+      val tokens = sessionStorage.get()
+      val idToken = tokens?.idToken
+
+      // If we have an ID token, use it to inform Keycloak which session to log out.
+      if (!idToken.isNullOrEmpty()) {
+        val result = repository.performLogout(
+          idToken = idToken
+        )
+        if (!result) {
+          Log.e(TAG, "Server logout failed. Proceeding with local logout.")
+        }
+      } else {
+        Log.e(TAG, "No ID token found, proceeding with local logout only.")
+      }
+
+      // Clear local session regardless of server logout result.
+      sessionStorage.clear()
+      updateIsLoggedIn(false)
+    }
+  }
+
   companion object {
     private val TAG = "MainViewModel"
   }

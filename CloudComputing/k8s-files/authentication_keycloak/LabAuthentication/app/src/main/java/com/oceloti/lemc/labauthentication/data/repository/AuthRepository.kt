@@ -73,6 +73,18 @@ class AuthRepository(private val api: AuthApi) {
     )
   }
 
+  suspend fun performLogout(idToken: String): Boolean {
+    return try {
+      val response = api.logout(
+        clientId = "lab-authentication-client",
+        idTokenHint = idToken
+      )
+      response.isSuccessful
+    } catch (e: Exception) {
+      Log.e(TAG, "Logout request failed: ${e.message}")
+      false
+    }
+  }
 }
 
 

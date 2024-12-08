@@ -1,8 +1,8 @@
 package com.oceloti.lemc.labauthentication.presentation.ui.views.dashboard
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -31,19 +29,39 @@ import androidx.compose.ui.unit.dp
 import com.oceloti.lemc.labauthentication.R
 import com.oceloti.lemc.labauthentication.network.responsemodels.StoreResponseModel
 import com.oceloti.lemc.labauthentication.presentation.actions.DashboardAction
+import com.oceloti.lemc.labauthentication.presentation.events.DashboardEvent
 import com.oceloti.lemc.labauthentication.presentation.models.LabUser
 import com.oceloti.lemc.labauthentication.presentation.states.DashboardState
 import com.oceloti.lemc.labauthentication.presentation.ui.components.GradientBackground
 import com.oceloti.lemc.labauthentication.presentation.ui.theme.LabAuthenticationGray40
 import com.oceloti.lemc.labauthentication.presentation.ui.theme.LabAuthenticationTheme
+import com.oceloti.lemc.labauthentication.presentation.util.ObserveAsEvents
+import com.oceloti.lemc.labauthentication.presentation.util.UiText
 import com.oceloti.lemc.labauthentication.presentation.viewmodel.DashboardViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun DashboardScreenRoot(
+  onError: (title: Int?) -> Unit,
   viewModel: DashboardViewModel = koinViewModel<DashboardViewModel>()
 ) {
   val context = LocalContext.current
+  ObserveAsEvents(viewModel.events) { event ->
+    when (event) {
+      is DashboardEvent.Error -> {
+        if (!event.shouldLogout) {
+          Toast.makeText(
+            context, event.error.asString(context),
+            Toast.LENGTH_LONG
+          ).show()
+        } else {
+          if(event.error is UiText.StringResource){
+            onError(event.error.id)
+          }
+        }
+      }
+    }
+  }
 
   DashboardScreen(state = viewModel.state, onAction = {})
 }
@@ -60,31 +78,35 @@ fun DashboardScreen(
         .padding(16.dp)
     ) {
       Row(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+          .fillMaxWidth()
           .height(200.dp)
           .padding(top = 32.dp)
           .background(LabAuthenticationGray40)
       ) {
         Column(
-          modifier = Modifier.fillMaxSize().weight(0.5f).padding(4.dp),
+          modifier = Modifier
+            .fillMaxSize()
+            .weight(0.5f)
+            .padding(4.dp),
           verticalArrangement = Arrangement.Center
         ) {
-          if(state.labUser == null) {
+          if (state.labUser == null) {
             Text(
               text = stringResource(id = R.string.lab_authentication_description),
               style = MaterialTheme.typography.bodyLarge,
               color = MaterialTheme.colorScheme.onBackground,
             )
-          }else {
+          } else {
             Text(
               text = stringResource(id = R.string.welcome_to_lab_authentication),
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onBackground,
             )
             Spacer(Modifier.height(8.dp))
-            
+
             Text(
-              text = state.labUser.id.toString() +"\n"+ state.labUser.name.toString(),
+              text = state.labUser.id.toString() + "\n" + state.labUser.name.toString(),
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onBackground,
             )
@@ -93,7 +115,9 @@ fun DashboardScreen(
           }
         }
         Column(
-          modifier = Modifier.fillMaxSize().weight(0.5f),
+          modifier = Modifier
+            .fillMaxSize()
+            .weight(0.5f),
           verticalArrangement = Arrangement.Center,
           horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -106,12 +130,14 @@ fun DashboardScreen(
         }
       }
       Spacer(Modifier.height(16.dp))
-      Column(modifier = Modifier.fillMaxWidth(),
+      Column(
+        modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        if(state.stores.isEmpty()){
+        horizontalAlignment = Alignment.CenterHorizontally
+      ) {
+        if (state.stores.isEmpty()) {
           CircularProgressIndicator()
-        }else{
+        } else {
           LazyColumn(
             modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -149,7 +175,13 @@ fun DashboardScreen(
 @Preview
 @Composable
 fun DashboardScreenPreview() {
-  val listOfStore = listOf<StoreResponseModel>(StoreResponseModel(storeId = 1,name = "Store 1", location = "Location"),StoreResponseModel(storeId = 2,name = "Store 2", location = "Location 2"))
+  val listOfStore = listOf<StoreResponseModel>(
+    StoreResponseModel(
+      storeId = 1,
+      name = "Store 1",
+      location = "Location"
+    ), StoreResponseModel(storeId = 2, name = "Store 2", location = "Location 2")
+  )
   val dashboardState = DashboardState(
     labUser = LabUser(
       id = "123456",

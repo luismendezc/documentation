@@ -49,6 +49,14 @@ interface AuthApi {
     @Field("client_id") clientId: String
   ): TokenResponseModel
 
+  @FormUrlEncoded
+  @POST("realms/oauthrealm/protocol/openid-connect/logout")
+  suspend fun logout(
+    @Field("client_id") clientId: String,
+    @Field("id_token_hint") idTokenHint: String,
+  ): retrofit2.Response<Void>
+
+
 }
 
 

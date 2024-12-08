@@ -5,4 +5,5 @@
   <string name="lab_authentication_description">This app is a test conformed of Keycloak and many different tools to test authentication wit OpendId Connect.</string>
   <string name="sign_in">Log in</string>
   <string name="sign_up">Register</string>
+  <string name="session_not_valid">Session not valid anymore.\nPlease try to login again.</string>
 </resources>
