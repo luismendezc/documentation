@@ -526,7 +526,8 @@ GRANT CONNECT ON DATABASE keycloak TO keycloak;
 ## **- Nexus implementation**
 To get the admin password:
 ```bash
- kubectl exec -it nexus-pod -i bash
+ ls -ld /var/jenkins_home/workspace/Build_Android_and_Upload_to_Nexus
+
 ```
 ```bash
 cat /nexus-data/admin.password
@@ -538,6 +539,7 @@ Then use the password without bash and the user as admin:
 Ej.
 user: admin
 password: 98a0b8b1-9021-4271-8b5f-9caa947ef0cf
+change password to: admin
 
 ##### **1. Configure a Repository in Nexus**
 In Nexus, we need to create a repository to store the Android build artifacts.
@@ -548,6 +550,7 @@ In Nexus, we need to create a repository to store the Android build artifacts.
 4. Configure the repository:
     - **Repository Name**: `android-builds`
     - **Version Policy**: Release
+    - **Deployment policy**: Allow redeploy
     - Leave other settings as default.
 5. Save the repository.
 
@@ -557,6 +560,80 @@ Job name:
 Build_Android_and_Upload_to_Nexus
 Type: Pipeline
 
+Script:
+```
+pipeline {
+    agent any
+
+    environment {
+        ANDROID_HOME = '/usr/local/android-sdk'
+        KEYSTORE_PATH = 'release-key.jks'
+        KEYSTORE_PASSWORD = credentials('keystore-password') // Add the password as a Jenkins credential
+        KEY_ALIAS = credentials('key-alias') // Add the alias as a Jenkins credential
+        KEY_PASSWORD = credentials('key-password') // Add the key password as a Jenkins credential
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/luismendezc/documentation.git'
+            }
+        }
+        stage('Prepare Keystore') {
+            steps {
+                withCredentials([file(credentialsId: 'android-release-keystore', variable: 'KEYSTORE_FILE')]) {
+                    sh """
+                    cp \$KEYSTORE_FILE $WORKSPACE/release-key.jks
+                    """
+                }
+            }
+        }
+        stage('Build Android Project') {
+            steps {
+                sh """
+                cd CloudComputing/k8s-files/authentication_keycloak/LabAuthentication
+                chmod +x ./gradlew
+                ./gradlew clean assembleRelease -Pandroid.injected.signing.store.file=$WORKSPACE/release-key.jks \
+                  -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD \
+                  -Pandroid.injected.signing.key.alias=$KEY_ALIAS \
+                  -Pandroid.injected.signing.key.password=$KEY_PASSWORD
+                """
+            }
+        }
+        stage('Verify Signed APK') {
+            steps {
+                sh """
+                if [ ! -f "CloudComputing/k8s-files/authentication_keycloak/LabAuthentication/app/build/outputs/apk/release/app-release.apk" ]; then
+                  echo "Signed APK not found!"
+                  exit 1
+                fi
+                """
+            }
+        }
+        stage('Upload to Nexus') {
+            steps {
+                nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: 'nexus-service:8081',
+                    repository: 'android-builds',
+                    credentialsId: 'nexus-admin', // Replace with the actual credentials ID
+                    groupId: 'com.oceloti.lemc.labauthentication',
+                    version: '1.0.0',
+                    artifacts: [[
+                        artifactId: 'app-release',
+                        classifier: '',
+                        file: 'CloudComputing/k8s-files/authentication_keycloak/LabAuthentication/app/build/outputs/apk/release/app-release.apk',
+                        type: 'apk'
+                    ]]
+                )
+            }
+        }
+
+    }
+}
+
+```
 
 #### **- Configure Jenkins Credentials**
 
@@ -569,6 +646,36 @@ To allow Jenkins to authenticate with Nexus, create a credential in Jenkins:
     - **Password**: (Your Nexus admin password)
     - **ID**: `nexus-admin`
 
+#### **- Add the Keystore to Jenkins Credentials**
+
+1. Open your Jenkins dashboard.
+2. Go to **Manage Jenkins** > **Manage Credentials**.
+3. Select the appropriate scope (e.g., Global credentials).
+4. Click **Add Credentials**.
+5. Choose **Secret file** as the credential type.
+6. Upload your `release-key.jks` file.
+7. Give it a meaningful **ID** (e.g., `android-release-keystore`).
+
+#### **- Credentials for Keystore Passwords**
+#### Add `keystore-password`:
+
+1. Go to **Manage Jenkins** > **Manage Credentials** > **Global** > **Add Credentials**.
+2. Choose **Secret text** as the credential type.
+3. Fill in:
+    - **ID**: `keystore-password`.
+    - **Secret**: The keystore password.
+#### Add `key-alias`:
+
+1. Repeat the process above.
+2. **ID**: `key-alias`.
+3. **Secret**: The alias of your key in the keystore.
+#### Add `key-password`:
+
+1. Repeat the process above.
+2. **ID**: `key-password`.
+3. **Secret**: The password for the key.
+
+
 
 ## **- Android Implementation**
 Look LabAuthentication inside documentation\CloudComputing\k8s-files\authentication_keycloak
@@ -580,7 +687,7 @@ keytool -genkeypair -v -keystore release-key.jks -keyalg RSA -keysize 2048 -vali
 - Save the `release-key.jks` file in a secure location.
 - Note down the keystore password, key alias, and key password.
 
-password: admin123
+passwords: admin123
 
 
 ## **- Node JS Implementation**

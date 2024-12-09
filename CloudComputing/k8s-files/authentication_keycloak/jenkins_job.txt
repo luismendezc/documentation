@@ -2,9 +2,11 @@ pipeline {
     agent any
 
     environment {
-        NEXUS_URL = 'http://nexus-pod:8081'
-        NEXUS_REPO = 'android-builds'
-        NEXUS_CREDENTIALS = credentials('nexus-admin') // Configure this in Jenkins
+        ANDROID_HOME = '/usr/local/android-sdk'
+        KEYSTORE_PATH = 'release-key.jks'
+        KEYSTORE_PASSWORD = credentials('keystore-password') // Add the password as a Jenkins credential
+        KEY_ALIAS = credentials('key-alias') // Add the alias as a Jenkins credential
+        KEY_PASSWORD = credentials('key-password') // Add the key password as a Jenkins credential
     }
 
     stages {
@@ -13,23 +15,57 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/luismendezc/documentation.git'
             }
         }
+        stage('Prepare Keystore') {
+            steps {
+                withCredentials([file(credentialsId: 'android-release-keystore', variable: 'KEYSTORE_FILE')]) {
+                    sh """
+                    cp \$KEYSTORE_FILE $WORKSPACE/release-key.jks
+                    """
+                }
+            }
+        }
         stage('Build Android Project') {
             steps {
                 sh """
                 cd CloudComputing/k8s-files/authentication_keycloak/LabAuthentication
-                ./gradlew clean assembleRelease
+                chmod +x ./gradlew
+                ./gradlew clean assembleRelease -Pandroid.injected.signing.store.file=$WORKSPACE/release-key.jks \
+                  -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD \
+                  -Pandroid.injected.signing.key.alias=$KEY_ALIAS \
+                  -Pandroid.injected.signing.key.password=$KEY_PASSWORD
+                """
+            }
+        }
+        stage('Verify Signed APK') {
+            steps {
+                sh """
+                if [ ! -f "CloudComputing/k8s-files/authentication_keycloak/LabAuthentication/app/build/outputs/apk/release/app-release.apk" ]; then
+                  echo "Signed APK not found!"
+                  exit 1
+                fi
                 """
             }
         }
         stage('Upload to Nexus') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'app-release', classifier: '', file: 'CloudComputing/k8s-files/authentication_keycloak/LabAuthentication/app/build/outputs/apk/release/app-release.apk', type: 'apk']],
-                credentialsId: 'nexus-admin',
-                groupId: 'com.example.android',
-                nexusUrl: "${NEXUS_URL}",
-                repository: "${NEXUS_REPO}",
-                version: '1.0.0'
+                nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: 'nexus-service:8081',
+                    repository: 'android-builds',
+                    credentialsId: 'nexus-admin', // Replace with the actual credentials ID
+                    groupId: 'com.oceloti.lemc.labauthentication',
+                    version: '1.0.0',
+                    artifacts: [[
+                        artifactId: 'app-release',
+                        classifier: '',
+                        file: 'CloudComputing/k8s-files/authentication_keycloak/LabAuthentication/app/build/outputs/apk/release/app-release.apk',
+                        type: 'apk'
+                    ]]
+                )
             }
         }
+
     }
 }
+
