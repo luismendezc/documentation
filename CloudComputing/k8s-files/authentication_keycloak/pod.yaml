@@ -81,3 +81,49 @@ spec:
   - name: certsvol
     secret:
       secretName: my-tls-secret
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-pod
+  labels:
+    app: jenkins-pod
+spec:
+  containers:
+    - name: jenkins
+      image: custom-jenkins:latest
+      imagePullPolicy: IfNotPresent # Use local image
+      ports:
+        - containerPort: 8080 # Jenkins Web UI
+        - containerPort: 50000 # Jenkins agent communication
+      env:
+        - name: JAVA_OPTS
+          value: "-Djenkins.install.runSetupWizard=false"
+      volumeMounts:
+        - name: jenkins-data
+          mountPath: /var/jenkins_home
+  volumes:
+    - name: jenkins-data
+      emptyDir: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nexus-pod
+  labels:
+    app: nexus-pod
+spec:
+  containers:
+    - name: nexus
+      image: sonatype/nexus3:latest
+      ports:
+        - containerPort: 8081 # Nexus Web UI
+      env:
+        - name: INSTALL4J_ADD_VM_PARAMS
+          value: "-Xms1200m -Xmx1200m"
+      volumeMounts:
+        - name: nexus-data
+          mountPath: /nexus-data
+  volumes:
+    - name: nexus-data
+      emptyDir: {}

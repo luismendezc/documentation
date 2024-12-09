@@ -1,0 +1,30 @@
+# Jenkins Dockerfile
+FROM jenkins/jenkins:lts
+
+USER root
+
+# Install Java 17 and Android SDK tools
+RUN apt-get update && \
+    apt-get install -y openjdk-17-jdk unzip && \
+    mkdir -p /usr/local/android-sdk/cmdline-tools && \
+    curl -o /tmp/commandlinetools.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip && \
+    unzip /tmp/commandlinetools.zip -d /usr/local/android-sdk/cmdline-tools && \
+    mv /usr/local/android-sdk/cmdline-tools/cmdline-tools /usr/local/android-sdk/cmdline-tools/latest && \
+    rm -rf /tmp/commandlinetools.zip
+
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV ANDROID_HOME=/usr/local/android-sdk
+ENV PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
+
+# Install necessary components and accept licenses
+RUN yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses && \
+    $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+        "platforms;android-34" \
+        "build-tools;34.0.0" \
+        "platform-tools"
+
+# Add necessary Jenkins plugins
+RUN jenkins-plugin-cli --plugins "workflow-aggregator git gradle android-emulator nexus-artifact-uploader"
+
+USER jenkins
+

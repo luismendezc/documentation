@@ -523,9 +523,67 @@ Grant access to keycloak user:
 GRANT CONNECT ON DATABASE keycloak TO keycloak;
 ```
 
-## **7. Android Implementation**
+## **- Nexus implementation**
+To get the admin password:
+```bash
+ kubectl exec -it nexus-pod -i bash
+```
+```bash
+cat /nexus-data/admin.password
+```
+Result example:
+98a0b8b1-9021-4271-8b5f-9caa947ef0cfbash
+
+Then use the password without bash and the user as admin:
+Ej.
+user: admin
+password: 98a0b8b1-9021-4271-8b5f-9caa947ef0cf
+
+##### **1. Configure a Repository in Nexus**
+In Nexus, we need to create a repository to store the Android build artifacts.
+#### Steps to Create a Repository:
+1. **Log into Nexus** at `http://localhost:32084/`.
+2. Go to **Repositories** > **Create Repository**.
+3. Choose **maven2 (hosted)** as the repository type (or raw, depending on how you plan to upload the APKs).
+4. Configure the repository:
+    - **Repository Name**: `android-builds`
+    - **Version Policy**: Release
+    - Leave other settings as default.
+5. Save the repository.
+
+## **- Jenkins implementation**
+
+Job name:
+Build_Android_and_Upload_to_Nexus
+Type: Pipeline
+
+
+#### **- Configure Jenkins Credentials**
+
+To allow Jenkins to authenticate with Nexus, create a credential in Jenkins:
+
+1. Go to **Manage Jenkins** > **Manage Credentials**.
+2. Add a new credential:
+    - **Kind**: Username with password
+    - **Username**: `admin` (or your Nexus username)
+    - **Password**: (Your Nexus admin password)
+    - **ID**: `nexus-admin`
+
+
+## **- Android Implementation**
 Look LabAuthentication inside documentation\CloudComputing\k8s-files\authentication_keycloak
-## **8. Node JS Implementation**
+
+Create Keystore:
+```bash
+keytool -genkeypair -v -keystore release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias keyAlias
+```
+- Save the `release-key.jks` file in a secure location.
+- Note down the keystore password, key alias, and key password.
+
+password: admin123
+
+
+## **- Node JS Implementation**
 Since the API is private, you'll need a Keycloak client that uses **client credentials** with a secret:
 
 modify the .env file to use the correct values:

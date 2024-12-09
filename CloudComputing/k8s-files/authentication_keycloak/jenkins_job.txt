@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    environment {
+        NEXUS_URL = 'http://nexus-pod:8081'
+        NEXUS_REPO = 'android-builds'
+        NEXUS_CREDENTIALS = credentials('nexus-admin') // Configure this in Jenkins
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/luismendezc/documentation.git'
+            }
+        }
+        stage('Build Android Project') {
+            steps {
+                sh """
+                cd CloudComputing/k8s-files/authentication_keycloak/LabAuthentication
+                ./gradlew clean assembleRelease
+                """
+            }
+        }
+        stage('Upload to Nexus') {
+            steps {
+                nexusArtifactUploader artifacts: [[artifactId: 'app-release', classifier: '', file: 'CloudComputing/k8s-files/authentication_keycloak/LabAuthentication/app/build/outputs/apk/release/app-release.apk', type: 'apk']],
+                credentialsId: 'nexus-admin',
+                groupId: 'com.example.android',
+                nexusUrl: "${NEXUS_URL}",
+                repository: "${NEXUS_REPO}",
+                version: '1.0.0'
+            }
+        }
+    }
+}

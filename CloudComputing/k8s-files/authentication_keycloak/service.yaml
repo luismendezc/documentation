@@ -47,3 +47,38 @@ spec:
       nodePort: 32026
       name: web-ui-port
   type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-service
+spec:
+  selector:
+    app: jenkins-pod
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 32082
+      name: jenkins-ui
+    - protocol: TCP
+      port: 50000
+      targetPort: 50000
+      nodePort: 32083
+      name: jenkins-agent
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nexus-service
+spec:
+  selector:
+    app: nexus-pod
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+      nodePort: 32084
+      name: nexus-web
+  type: NodePort
