@@ -11,13 +11,16 @@ object JwtUtils {
     val signedJWT = SignedJWT.parse(idToken)
     val claims = signedJWT.jwtClaimsSet
 
+    Log.d("AuthInterceptor", "Decoded Claims: $claims")
+
     return LabUser(
       id = claims.subject,
       name = claims.getStringClaim("name"),
       firstName = claims.getStringClaim("given_name"),
       lastName = claims.getStringClaim("family_name"),
       email = claims.getStringClaim("email"),
-      picture = claims.getStringClaim("picture")
+      picture = claims.getStringClaim("picture"),
+      nonce = claims.getStringClaim("nonce")
     )
   }
 

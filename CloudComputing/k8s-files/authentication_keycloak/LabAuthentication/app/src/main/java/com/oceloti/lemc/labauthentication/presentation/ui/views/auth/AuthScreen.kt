@@ -1,6 +1,7 @@
 package com.oceloti.lemc.labauthentication.presentation.ui.views.auth
 
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.foundation.layout.Box
@@ -38,9 +39,12 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun AuthScreenRoot(
+  isLoggedIn: Boolean = false,
+  isLocked: Boolean = false,
   viewModel: AuthViewModel = koinViewModel<AuthViewModel>()
 ) {
   val context = LocalContext.current
+  Log.d("AuthScreenRoot", "isLoggedIn: $isLoggedIn, isLocked: $isLocked")
 
   ObserveAsEvents(viewModel.events) { event ->
     when (event) {
@@ -63,6 +67,7 @@ fun AuthScreenRoot(
 
   AuthScreen(
     state = viewModel.state,
+    isLocked = isLocked,
     onAction = { action ->
       viewModel.onAction(action)
     }
@@ -72,6 +77,7 @@ fun AuthScreenRoot(
 @Composable
 fun AuthScreen(
   state: AuthState,
+  isLocked: Boolean = false,
   onAction: (AuthAction) -> Unit
 ) {
   GradientBackground {
@@ -81,7 +87,7 @@ fun AuthScreen(
         .weight(1f),
       contentAlignment = Alignment.Center
     ) {
-      LabAuthenticationLogoVertical()
+      LabAuthenticationLogoVertical(isLocked)
     }
     Column(
       modifier = Modifier
@@ -128,6 +134,7 @@ fun AuthScreen(
 
 @Composable
 private fun LabAuthenticationLogoVertical(
+  isLocked: Boolean,
   modifier: Modifier = Modifier
 ) {
   Column(
@@ -135,9 +142,8 @@ private fun LabAuthenticationLogoVertical(
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
     Icon(
-      imageVector = ImageVector.vectorResource(id = R.drawable.test),
+      imageVector = if(isLocked) ImageVector.vectorResource(id = R.drawable.lock) else ImageVector.vectorResource(id = R.drawable.test),
       contentDescription = "Logo",
-      tint = MaterialTheme.colorScheme.onSurface,
       modifier = Modifier.size(100.dp)
     )
     Spacer(modifier = Modifier.height(12.dp))
@@ -157,6 +163,7 @@ private fun AuthScreenPreview() {
   LabAuthenticationTheme() {
     AuthScreen(
       state = mainState,
+      isLocked = false,
       onAction = {
 
       }

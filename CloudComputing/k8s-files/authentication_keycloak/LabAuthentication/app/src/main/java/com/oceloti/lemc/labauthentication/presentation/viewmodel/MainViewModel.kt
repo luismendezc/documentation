@@ -29,6 +29,8 @@ class MainViewModel(
     viewModelScope.launch {
       val tokens = sessionStorage.get()
       if (!tokens?.refreshToken.isNullOrEmpty()) {
+        //TODO Validate that the refresh token is valid
+        lockApp()
         updateIsLoggedIn(true)
       } else {
         updateIsLoggedIn(false)
@@ -54,6 +56,7 @@ class MainViewModel(
       if (response != null) {
         sessionStorage.set(response.toLabToken())
         updateIsLoggedIn(true)
+        unlockApp()
       }
       updateIsCheckingAuth(false)
       response
@@ -75,6 +78,16 @@ class MainViewModel(
     state = state.copy(isLoggedIn = isLoggedIn)
   }
 
+  fun lockApp() {
+    Log.d(TAG, "Locking app")
+    state = state.copy(isLocked = true)
+  }
+
+  fun unlockApp() {
+    state = state.copy(isLocked = false)
+  }
+
+
   fun logout(){
     viewModelScope.launch {
       val tokens = sessionStorage.get()
@@ -95,6 +108,7 @@ class MainViewModel(
       // Clear local session regardless of server logout result.
       sessionStorage.clear()
       updateIsLoggedIn(false)
+      unlockApp()
     }
   }
 

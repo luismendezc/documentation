@@ -25,26 +25,33 @@ import com.oceloti.lemc.labauthentication.presentation.ui.views.dashboard.Dashbo
 import com.oceloti.lemc.labauthentication.presentation.util.UiText
 
 @Composable
-fun NavigationRoot(navController: NavHostController, isLoggedIn: Boolean) {
-  val startDestination = if (isLoggedIn) "dashboard" else "auth"
+fun NavigationRoot(navController: NavHostController, isLoggedIn: Boolean, isLocked: Boolean) {
+  val startDestination = if (isLoggedIn && !isLocked) {
+    "dashboard"
+  } else {
+    "auth"
+  }
 
   NavHost(
     navController = navController,
     startDestination = startDestination
   ) {
-    authGraph(navController)
+    authGraph(navController,isLoggedIn, isLocked)
     dashboardGraph(navController)
     errorGraph(navController)
   }
 }
 
-private fun NavGraphBuilder.authGraph(navController: NavHostController) {
+private fun NavGraphBuilder.authGraph(navController: NavHostController, isLoggedIn: Boolean = false, isLocked: Boolean = false) {
   navigation(
     startDestination = "intro",
     route = "auth"
   ) {
     composable(route = "intro") {
-      AuthScreenRoot()
+      AuthScreenRoot(
+        isLoggedIn = isLoggedIn,
+        isLocked = isLocked
+      )
     }
   }
 }

@@ -189,7 +189,8 @@ fun DashboardScreenPreview() {
       email = "lemendezc@hotmail.com",
       lastName = "Mendez",
       firstName = "Luis",
-      picture = null
+      picture = null,
+      nonce = null
     ),
     stores = listOfStore
   )

@@ -46,19 +46,18 @@ class MainActivity : ComponentActivity() {
           color = MaterialTheme.colorScheme.background
         ) {
           val state = mainViewModel.state
+          val navController = rememberNavController()
           if (!state.isCheckingAuth) {
-            val navController = rememberNavController()
             NavigationRoot(
               navController = navController,
               isLoggedIn = state.isLoggedIn,
+              isLocked = state.isLocked
             )
           }
-          // Start or stop the session timer whenever isLoggedIn changes
-          LaunchedEffect (state.isLoggedIn) {
-            if (state.isLoggedIn) {
-              startSessionTimer()
-            } else {
-              stopSessionTimer()
+          LaunchedEffect(state) {
+            when {
+              state.isLoggedIn && !state.isLocked -> startSessionTimer()
+              else -> stopSessionTimer()
             }
           }
         }
@@ -92,7 +91,8 @@ class MainActivity : ComponentActivity() {
       // Timeout occurred, log the user out
       lifecycleScope.launch(Dispatchers.Main.immediate) {
         Toast.makeText(this@MainActivity, "Session timed out", Toast.LENGTH_LONG).show()
-        mainViewModel.logout()
+        mainViewModel.lockApp()
+        //mainViewModel.logout()
       }
     }
   }

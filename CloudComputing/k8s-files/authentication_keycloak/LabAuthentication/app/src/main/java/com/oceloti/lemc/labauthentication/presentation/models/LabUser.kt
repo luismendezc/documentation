@@ -6,5 +6,6 @@ data class LabUser(
   val firstName: String?,  // Maps to "given_name"
   val lastName: String?,   // Maps to "family_name"
   val email: String?,      // Maps to "email"
-  val picture: String?     // Maps to "picture"
+  val picture: String?,     // Maps to "picture"
+  val nonce: String?
 )

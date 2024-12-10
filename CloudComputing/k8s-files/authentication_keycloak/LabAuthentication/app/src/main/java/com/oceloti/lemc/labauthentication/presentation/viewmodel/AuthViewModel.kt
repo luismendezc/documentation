@@ -54,6 +54,7 @@ class AuthViewModel(
     Log.d(TAG, "startOAuthFlow() called")
     val codeVerifier = PKCEUtil.generateCodeVerifier()
     val codeChallenge = PKCEUtil.generateCodeChallenge(codeVerifier)
+    val nonce = "abc123"
 
     // Store codeVerifier for later use
     oidcCodeVerifier.setCodeVerifier(codeVerifier)
@@ -66,9 +67,10 @@ class AuthViewModel(
         "&scope=openid" +
         "&state=xyz123" +
         "&code_challenge=$codeChallenge" +
-        "&code_challenge_method=S256"
+        "&code_challenge_method=S256" +
+        "&nonce=$nonce"
 
-    Log.d("HOLA", authUrl)
+    Log.d(TAG, "auth code request: $authUrl")
     // Send to chanel
     viewModelScope.launch {
       eventChannel.send(
