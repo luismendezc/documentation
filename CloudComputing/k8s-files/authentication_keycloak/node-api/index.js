@@ -5,7 +5,7 @@ const express = require("express");
 const router = require("./src/routes");
 
 const app = express();
-const PORT = 3000;
+const PORT = 4000;
 
 // Load the self-signed certificate and key
 const httpsOptions = {

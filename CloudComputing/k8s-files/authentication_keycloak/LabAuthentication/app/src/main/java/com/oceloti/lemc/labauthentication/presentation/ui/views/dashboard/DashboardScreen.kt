@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -63,13 +64,25 @@ fun DashboardScreenRoot(
     }
   }
 
-  DashboardScreen(state = viewModel.state, onAction = {})
+  DashboardScreen(state = viewModel.state, onAction = { it ->
+    when(it){
+      DashboardAction.OnSdkClick -> {
+        viewModel.showSDK()
+      }
+      DashboardAction.OnSignInClick -> {
+        //TODO()
+      }
+      DashboardAction.OnSignUpClick -> {
+        //TODO()
+      }
+    }
+  })
 }
 
 @Composable
 fun DashboardScreen(
   state: DashboardState,
-  onAction: (DashboardAction) -> Unit
+  onAction: (DashboardAction) -> Unit,
 ) {
   GradientBackground {
     Column(
@@ -164,6 +177,18 @@ fun DashboardScreen(
               )
             }
           }
+        }
+      }
+      Spacer(Modifier.height(16.dp))
+      Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+      ) {
+        Button(onClick = {
+          onAction(DashboardAction.OnSdkClick)
+        }) {
+          Text(text = "Show LemcSDK")
         }
       }
 

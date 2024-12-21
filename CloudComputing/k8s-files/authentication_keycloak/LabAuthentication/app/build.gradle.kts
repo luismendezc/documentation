@@ -45,6 +45,7 @@ android {
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
+    isCoreLibraryDesugaringEnabled = true
   }
   kotlinOptions {
     jvmTarget = "11"
@@ -55,6 +56,8 @@ android {
 }
 
 dependencies {
+  coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+
   // Added libraries for the project
   implementation(project.dependencies.platform(libs.koin.bom))
   implementation(libs.koin.core)
@@ -100,4 +103,7 @@ dependencies {
   androidTestImplementation(libs.androidx.ui.test.junit4)
   debugImplementation(libs.androidx.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)
+
+
+  implementation(project(":design-uilemc"))
 }

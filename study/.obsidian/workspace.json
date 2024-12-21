@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth)"
             }
+          },
+          {
+            "id": "9fa2790065b65b49",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Android Library - Verimi LIKE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Android Library - Verimi LIKE"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -159,12 +174,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ba743f183c2dac18",
+  "active": "9fa2790065b65b49",
   "lastOpenFiles": [
+    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth).md",
+    "Android Library - Verimi LIKE.md",
     "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
     "1_Assets/images/Pasted image 20241108181139.png",
     "1_Assets/images/Pasted image 20241019213938.png",
-    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth).md",
     "1_Assets/images/Cloud Computing/Pasted image 20241120152535.png",
     "Pasted image 20241206191828.png",
     "1_Assets/images/LabAuthentication/Pasted image 20241206191813.png",

@@ -12,6 +12,8 @@ composeBom = "2024.04.01"
 koin-bom = "4.0.0"
 appauthVersion = "0.11.1"
 browserVersion = "1.8.0"
+appcompat = "1.7.0"
+material = "1.12.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -37,9 +39,12 @@ appauth = { group = "net.openid", name = "appauth", version.ref = "appauthVersio
 browser =  { group ="androidx.browser", name="browser", version.ref="browserVersion"}
 androidx-runtime = {group = "androidx.compose.runtime", name = "runtime" }
 androidx-lifecycle-runtime-compose = {group = "androidx.lifecycle", name="lifecycle-runtime-compose", version.ref="lifecycleRuntimeKtx"}
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 
