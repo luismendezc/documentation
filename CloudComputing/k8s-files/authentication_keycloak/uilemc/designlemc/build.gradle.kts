@@ -35,7 +35,6 @@ android {
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
-    isCoreLibraryDesugaringEnabled = true
   }
   kotlinOptions {
     jvmTarget = "11"
@@ -53,8 +52,6 @@ android {
 }
 
 dependencies {
-  coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
-
   implementation(libs.androidx.lifecycle.runtime.ktx)
   implementation(libs.androidx.activity.compose)
   implementation(platform(libs.androidx.compose.bom))
@@ -110,7 +107,7 @@ afterEvaluate {
         from(components["release"])
         groupId = "com.oceloti.lemc"
         artifactId = "designlemc"
-        version = "0.0.7"
+        version = "0.0.8"
       }
       named<MavenPublication>("release") {
         // Remove any "sources" artifacts from being published

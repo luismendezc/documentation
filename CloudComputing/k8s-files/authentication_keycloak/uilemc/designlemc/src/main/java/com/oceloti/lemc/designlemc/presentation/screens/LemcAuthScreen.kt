@@ -1,4 +1,4 @@
-package com.oceloti.lemc.designlemc
+package com.oceloti.lemc.designlemc.presentation.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -14,7 +14,8 @@ internal fun LemcAuthScreen(
   token: String?,
   onError: (String) -> Unit,
   onSuccess: () -> Unit,
-  onUpdate: () -> Unit
+  onUpdate: () -> Unit,
+  onFlowCLick: () -> Unit
 ) {
   Column(modifier = Modifier.padding(16.dp)) {
     Text(text = "Lemc Auth Screen")
@@ -40,6 +41,13 @@ internal fun LemcAuthScreen(
       modifier = Modifier.padding(top = 16.dp)
     ) {
       Text(text = "Simulate Update")
+    }
+
+    Button(
+      onClick = onFlowCLick,
+      modifier = Modifier.padding(top = 16.dp)
+    ) {
+      Text(text = "Flow Demo")
     }
   }
 }

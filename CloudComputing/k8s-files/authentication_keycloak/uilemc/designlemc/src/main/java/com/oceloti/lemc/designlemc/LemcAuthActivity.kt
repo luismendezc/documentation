@@ -5,16 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.lifecycleScope
-import com.google.gson.Gson
+import androidx.navigation.compose.rememberNavController
+import com.oceloti.lemc.designlemc.presentation.navigation.NavigationRoot
 import com.oceloti.lemc.designlemc.ui.theme.UilemcTheme
-import kotlinx.coroutines.launch
 
 internal class LemcAuthActivity : ComponentActivity() {
 
@@ -33,57 +29,19 @@ internal class LemcAuthActivity : ComponentActivity() {
 
     setContent {
       UilemcTheme {
-        LemcAuthScreen(
-          email = email,
-          token = token,
-          onError = { errorMsg ->
-            val errorPayload = LemcResponseModel(
-              operation = LemcSdkOperation.AUTH,
-              traceId = "someTraceId",
-              error = LemcResponseModel.Error(
-                type = "CRITICAL",
-                errorClass = "SOME_ERROR_CLASS",
-                title = "AuthError",
-                message = "Something went wrong",
-                errorCode = "123"
-              )
-            )
-            val errorJson = Gson().toJson(errorPayload)
-            sdkImpl.emitMessage("ERROR")
-            finish()
-          },
-          onSuccess = {
-            val successPayload = LemcResponseModel(
-              operation = LemcSdkOperation.AUTH,
-              traceId = "auth-trace-id-456",
-              success = LemcResponseModel.Success(
-                status = "SUCCEEDED",
-                redirectUrl = "https://example.com/myAuthRedirect",
-                singleUserMode = false,
-                isDeviceSecure = true,
-                is2FATransactionActive = false,
-                takId = "myTakId",
-                sealOneId = "someSealOneId"
-              )
-            )
-            val successJson = Gson().toJson(successPayload)
-            sdkImpl.emitMessage(successJson)
-            finish()
-          },
-          onUpdate = {
-            val updatePayload = LemcResponseModel(
-              operation = LemcSdkOperation.AUTH,
-              traceId = "auth-trace-id-789",
-              update = LemcResponseModel.Update(
-                type = "PROGRESS",
-                status = "IN_PROGRESS",
-                description = "Waiting for user input..."
-              )
-            )
-            val updateJson = Gson().toJson(updatePayload)
-            sdkImpl.emitMessage(updateJson)
-          }
-        )
+        Surface(
+          modifier = Modifier.fillMaxSize(),
+          color = MaterialTheme.colorScheme.background
+        ) {
+          val navController = rememberNavController()
+          NavigationRoot(
+            navController = navController,
+            email = email!!,
+            token = token!!,
+            lemcSdk = sdkImpl,
+            onFinish = {this.finish()}
+          )
+        }
       }
     }
   }
