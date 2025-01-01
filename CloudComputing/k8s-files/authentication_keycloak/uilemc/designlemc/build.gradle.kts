@@ -84,6 +84,9 @@ dependencies {
 
   implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
+  //open street map
+  implementation("org.osmdroid:osmdroid-android:6.1.20")
+
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.appcompat)
   implementation(libs.material)

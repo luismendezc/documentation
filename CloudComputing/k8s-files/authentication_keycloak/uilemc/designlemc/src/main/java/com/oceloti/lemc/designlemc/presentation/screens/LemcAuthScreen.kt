@@ -15,7 +15,8 @@ internal fun LemcAuthScreen(
   onError: (String) -> Unit,
   onSuccess: () -> Unit,
   onUpdate: () -> Unit,
-  onFlowCLick: () -> Unit
+  onFlowCLick: () -> Unit,
+  onMapClick: () -> Unit
 ) {
   Column(modifier = Modifier.padding(16.dp)) {
     Text(text = "Lemc Auth Screen")
@@ -48,6 +49,13 @@ internal fun LemcAuthScreen(
       modifier = Modifier.padding(top = 16.dp)
     ) {
       Text(text = "Flow Demo")
+    }
+
+    Button(
+      onClick = onMapClick,
+      modifier = Modifier.padding(top = 16.dp)
+    ) {
+      Text(text = "Open Street map demo")
     }
   }
 }

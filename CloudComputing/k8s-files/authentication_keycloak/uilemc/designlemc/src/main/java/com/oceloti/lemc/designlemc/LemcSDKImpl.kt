@@ -1,8 +1,11 @@
 package com.oceloti.lemc.designlemc
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
+import android.preference.PreferenceManager
 import android.util.Log
+import org.osmdroid.config.Configuration
 import java.util.concurrent.CopyOnWriteArrayList
 
 internal class LemcSDKImpl private constructor(
@@ -22,7 +25,26 @@ internal class LemcSDKImpl private constructor(
 
   override fun initialize(config: LemcSDK.Config) {
     this.config = config
-    Log.d("TESTING", "initialized")
+    // 1) Use the Application context
+    val context = application.applicationContext
+
+    // 2) Load osmdroid configuration
+    //    'PreferenceManager' from android.preference is deprecated, but still commonly used for osmdroid.
+    //    If you prefer, you can migrate to AndroidX Preference, or just keep using it for now.
+    Configuration.getInstance().load(
+      context,
+      context.getSharedPreferences("${context.packageName}_preferences", Context.MODE_PRIVATE)
+    )
+
+    // Optionally, set a user agent value (helpful to identify your app’s requests):
+    // This is recommended by osmdroid to avoid potential tile-server issues.
+    Configuration.getInstance().userAgentValue = context.packageName
+    Configuration.getInstance().tileFileSystemCacheMaxBytes = 100L * 1024L * 1024L
+
+    // 3) Log or handle success
+    Log.d("LemcSDK", "OSMDroid configuration initialized.")
+
+    Log.d("TESTING", "initialized with environment = ${config.environment}")
   }
 
   override fun authenticate(params: LemcSDK.AuthParams) {

@@ -38,6 +38,7 @@ import com.oceloti.lemc.designlemc.presentation.actions.DrawingAction
 import com.oceloti.lemc.designlemc.presentation.components.DrawingCanvas
 import com.oceloti.lemc.designlemc.presentation.screens.LemcAuthScreen
 import com.oceloti.lemc.designlemc.presentation.screens.LemcFlowScreen
+import com.oceloti.lemc.designlemc.presentation.screens.LemcMapScreenRoot
 import com.oceloti.lemc.designlemc.presentation.states.allColors
 import com.oceloti.lemc.designlemc.presentation.viewmodels.DrawingViewModel
 
@@ -122,6 +123,9 @@ private fun NavGraphBuilder.lemcAuthGraph(
         },
         onFlowCLick = {
           navController.navigate("flow")
+        } ,
+        onMapClick = {
+          navController.navigate("map")
         }
       )
     }
@@ -190,6 +194,10 @@ private fun NavGraphBuilder.lemcAuthGraph(
 
     composable(route = "flow") {
       LemcFlowScreen()
+    }
+
+    composable(route = "map") {
+      LemcMapScreenRoot()
     }
 
 
