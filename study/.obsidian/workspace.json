@@ -4,51 +4,67 @@
     "type": "split",
     "children": [
       {
-        "id": "bf23d77e13048d96",
+        "id": "a73959a49f414cd4",
         "type": "tabs",
         "children": [
           {
-            "id": "4c593945643b73c9",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "1_Assets/pdf/SecDevOpsyAdministracióndeRedesparaCloud.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "SecDevOpsyAdministracióndeRedesparaCloud"
-            }
-          },
-          {
-            "id": "4c44fc6335838cb6",
+            "id": "66bf42b7b42ace1f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Animations android.md",
+                "file": "iOS/Environment Management in Xcode Using “.xcconfig” Files.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Animations android"
+              "title": "Environment Management in Xcode Using “.xcconfig” Files"
             }
           },
           {
-            "id": "b0706b4267cce107",
+            "id": "389c215208f82569",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Instalar Gitlab con Ansible.md",
+                "file": "iOS/100 days challenge/Day 1 - First steps in Swift.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Instalar Gitlab con Ansible"
+              "title": "Day 1 - First steps in Swift"
+            }
+          },
+          {
+            "id": "2a88a7ecaa586c21",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "iOS/100 days challenge/Day 1 - First steps in Swift.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 1 - First steps in Swift"
+            }
+          },
+          {
+            "id": "325e3b9cb3bf7359",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "iOS/100 days challenge/Day 1 - First steps in Swift.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Day 1 - First steps in Swift"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -186,14 +202,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4c44fc6335838cb6",
+  "active": "325e3b9cb3bf7359",
   "lastOpenFiles": [
+    "iOS/100 days challenge/Day 2.md",
+    "iOS/100 days challenge/Day 1 - First steps in Swift.md",
+    "Introduction.md",
+    "iOS/Environment Management in Xcode Using “.xcconfig” Files.md",
+    "iOS/100 days challenge",
+    "Lua/LÖVE 2D and Lua.md",
+    "Lua",
     "1_Assets/pdf/SecDevOpsyAdministracióndeRedesparaCloud.pdf",
-    "Animations android.md",
+    "Android/Animations android.md",
+    "Android/Android Library - Verimi LIKE.md",
+    "Android app Compose + React native.md",
     "Instalar Gitlab con Ansible.md",
     "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth).md",
     "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
-    "Android Library - Verimi LIKE.md",
     "1_Assets/images/Pasted image 20241108181139.png",
     "1_Assets/images/Pasted image 20241019213938.png",
     "1_Assets/images/Cloud Computing/Pasted image 20241120152535.png",
@@ -213,7 +237,6 @@
     "Android/HackerRank",
     "Cloud Computing/SSL Pinning Android  + Ubuntu + Apache 443  php.md",
     "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth).md",
-    "Android app Compose + React native.md",
     "AWS Cloud Practitioner (CLF-C02)/AWS Cloud Practitioner Index.md",
     "AWS Cloud Practitioner (CLF-C02)/1 - Cloud Computing.md",
     "Technology Information - Extra/Bitmaps, MIME.md",
@@ -226,12 +249,6 @@
     "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
     "System Administration/AWS/No use root account for AWS use users.md",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf",
-    "1_Assets/pdf/CloudComputing/AWS php Server.pdf",
-    "1_Assets/pdf/CloudComputing",
-    "Cloud Computing/Setup apache server with php page in Virtual Box Machine and NAT adapter.md",
-    "1_Assets/pdf/AdministraciondeSistemasparalaCloud.pdf",
-    "Android/Network/Retrofit.md",
-    "Android/Android development.md",
-    "iOS/Environment Management in Xcode Using “.xcconfig” Files.md"
+    "1_Assets/pdf/CloudComputing/AWS php Server.pdf"
   ]
 }
