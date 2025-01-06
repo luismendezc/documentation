@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.oceloti.lemc.designuilemc.SdkService
 import com.oceloti.lemc.labauthentication.R
 import com.oceloti.lemc.labauthentication.data.repository.AuthRepository
 import com.oceloti.lemc.labauthentication.data.repository.StoreRepository
@@ -24,6 +25,7 @@ class DashboardViewModel(
   private val repository: StoreRepository,
   private val authRepository: AuthRepository,
   private val sessionStorage: SessionStorage,
+  private val sdkService: SdkService
 ) : ViewModel() {
   var state by mutableStateOf(DashboardState())
     private set
@@ -40,6 +42,10 @@ class DashboardViewModel(
         getStores()
       }
     }
+  }
+
+  fun showSDK(){
+    sdkService.startFlow(email = "lemc@oceloti.com", token = "123456")
   }
 
   private suspend fun fetchLabUser() {

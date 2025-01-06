@@ -16,8 +16,10 @@ dependencyResolutionManagement {
   repositories {
     google()
     mavenCentral()
+    mavenLocal()
   }
 }
 
 rootProject.name = "LabAuthentication"
 include(":app")
+include(":design-uilemc")

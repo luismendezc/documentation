@@ -2,6 +2,7 @@ package com.oceloti.lemc.labauthentication.di
 
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
+import com.oceloti.lemc.designuilemc.di.designuilemcKoinModule
 import com.oceloti.lemc.labauthentication.MyApp
 import com.oceloti.lemc.labauthentication.data.repository.AuthRepository
 import com.oceloti.lemc.labauthentication.data.repository.StoreRepository
@@ -31,6 +32,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 val appModule = module {
+
+  includes(designuilemcKoinModule)
+
   // SECURITY
   single {
     EncryptedSharedPreferences(
@@ -71,7 +75,7 @@ val appModule = module {
 
   single {
     Retrofit.Builder()
-      .baseUrl("https://10.151.130.198:3000/") // Use the Node.js API base URL
+      .baseUrl("https://10.151.130.198:4000/") // Use the Node.js API base URL
       .client(provideOkHttpClient(androidContext(), lazy { get<AuthInterceptor>() }))
       .addConverterFactory(GsonConverterFactory.create())
       .build()
@@ -89,4 +93,6 @@ val appModule = module {
   viewModelOf(::MainViewModel)
   viewModelOf(::AuthViewModel)
   viewModelOf(::DashboardViewModel)
+
+
 }
