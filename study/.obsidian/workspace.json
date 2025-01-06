@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth)"
             }
+          },
+          {
+            "id": "3ebe68c3b6089370",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Android/Explicit Deep Links.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Explicit Deep Links"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -161,10 +176,11 @@
   },
   "active": "ba743f183c2dac18",
   "lastOpenFiles": [
+    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth).md",
+    "Android/Explicit Deep Links.md",
     "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
     "1_Assets/images/Pasted image 20241108181139.png",
     "1_Assets/images/Pasted image 20241019213938.png",
-    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth).md",
     "1_Assets/images/Cloud Computing/Pasted image 20241120152535.png",
     "Pasted image 20241206191828.png",
     "1_Assets/images/LabAuthentication/Pasted image 20241206191813.png",
