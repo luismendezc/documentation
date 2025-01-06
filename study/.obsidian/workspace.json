@@ -204,6 +204,7 @@
   },
   "active": "325e3b9cb3bf7359",
   "lastOpenFiles": [
+    "Android/Explicit Deep Links.md",
     "iOS/100 days challenge/Day 2.md",
     "iOS/100 days challenge/Day 1 - First steps in Swift.md",
     "Introduction.md",
@@ -247,7 +248,6 @@
     "System Administration/Automating with Shell Scripting.md",
     "System Administration/Bash manual.md",
     "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
-    "System Administration/AWS/No use root account for AWS use users.md",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf"
   ]
