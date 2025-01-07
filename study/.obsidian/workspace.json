@@ -8,13 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f439693fa68f1f92",
+            "id": "cf214ed703a1d8a7",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "iOS/100 days challenge/Day 7 - Functions, part one.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Day 7 - Functions, part one"
             }
           }
         ]
@@ -155,13 +159,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f439693fa68f1f92",
+  "active": "cf214ed703a1d8a7",
   "lastOpenFiles": [
+    "iOS/100 days challenge/Day 6 - Loops.md",
+    "iOS/100 days challenge/Day 7 - Functions, part one.md",
+    "iOS/100 days challenge/Day 5 - Conditions.md",
+    "iOS/100 days challenge/Day 4 - Complex data types, part 2.md",
+    "iOS/100 days challenge/Day 3 - Complex data types, part 1.md",
+    "iOS/Introduction 100 days.md",
+    "Instalar Gitlab con Ansible.md",
     "iOS/100 days challenge/Day 2 - Simple data types, part 2.md",
     "iOS/100 days challenge/Day 1 - First steps in Swift.md",
-    "Android/Explicit Deep Links.md",
-    "Introduction.md",
     "iOS/Environment Management in Xcode Using “.xcconfig” Files.md",
+    "Android/Explicit Deep Links.md",
     "iOS/100 days challenge",
     "Lua/LÖVE 2D and Lua.md",
     "Lua",
@@ -169,7 +179,6 @@
     "Android/Animations android.md",
     "Android/Android Library - Verimi LIKE.md",
     "Android app Compose + React native.md",
-    "Instalar Gitlab con Ansible.md",
     "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth).md",
     "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
     "1_Assets/images/Pasted image 20241108181139.png",
@@ -196,11 +205,6 @@
     "Technology Information - Extra/Bitmaps, MIME.md",
     "System Administration/WSL Windows.md",
     "System Administration/Windows SSH.md",
-    "System Administration/Linux distributions.md",
-    "System Administration/Generating a new SSH key and adding it to the ssh-agent.md",
-    "System Administration/Automating with Shell Scripting.md",
-    "System Administration/Bash manual.md",
-    "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf"
   ]
