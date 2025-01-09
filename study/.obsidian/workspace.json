@@ -11,10 +11,14 @@
             "id": "cbe568debb4a46c2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "iOS/100 days challenge/Day 12 - Classes.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Day 12 - Classes"
             }
           }
         ]
@@ -157,6 +161,7 @@
   },
   "active": "cbe568debb4a46c2",
   "lastOpenFiles": [
+    "iOS/100 days challenge/Day 12 - Classes.md",
     "iOS/100 days challenge/Day 11 - Structs, part two.md",
     "iOS/100 days challenge/Day 10 - Structs, part one.md",
     "iOS/100 days challenge/Day 9 - Closures.md",
@@ -200,7 +205,6 @@
     "Android/HackerRank",
     "Cloud Computing/SSL Pinning Android  + Ubuntu + Apache 443  php.md",
     "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Android Compose (with AppAuth).md",
-    "AWS Cloud Practitioner (CLF-C02)/AWS Cloud Practitioner Index.md",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf"
   ]
