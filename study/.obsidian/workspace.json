@@ -11,10 +11,14 @@
             "id": "45148aef552f8f36",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "iOS/Apple - Official iOS Study.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Apple - Official iOS Study"
             }
           }
         ]
@@ -155,7 +159,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ba743f183c2dac18",
+  "active": "45148aef552f8f36",
   "lastOpenFiles": [
     "iOS/100 days challenge/Day 17 - Project 1, part two.md",
     "iOS/100 days challenge/Day 18 - Project 1, part three.md",
