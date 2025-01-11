@@ -1,0 +1,1 @@
+https://github.com/koush/vysor.io/wiki/Vysor-Dongle
