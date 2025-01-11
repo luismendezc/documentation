@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "3cc05b0feca0eb2d",
+        "id": "95d8bf59301b7785",
         "type": "tabs",
         "children": [
           {
-            "id": "1ed0d6e7b4a57ec0",
+            "id": "45148aef552f8f36",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Wireless Vysor.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Wireless Vysor"
+              "title": "New tab"
             }
           }
         ]
@@ -159,8 +155,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1ed0d6e7b4a57ec0",
+  "active": "ba743f183c2dac18",
   "lastOpenFiles": [
+    "iOS/100 days challenge/Day 17 - Project 1, part two.md",
+    "iOS/100 days challenge/Day 18 - Project 1, part three.md",
+    "iOS/100 days challenge/Day 16 - Project 1, part one.md",
+    "iOS/100 days challenge/Day 15 - Swift review.md",
+    "iOS/Swift glossary.md",
     "Wireless Vysor.md",
     "iOS/100 days challenge/Day 14 - Optionals.md",
     "iOS/100 days challenge/Day 13 - Protocols and extensions.md",
@@ -185,9 +186,6 @@
     "Lua",
     "1_Assets/pdf/SecDevOpsyAdministracióndeRedesparaCloud.pdf",
     "Android/Animations android.md",
-    "Android/Android Library - Verimi LIKE.md",
-    "Android app Compose + React native.md",
-    "Cloud Computing/Docker-Kubernetes + Postgresql + Keycloak + NodeJS API + Mailhog + Android Compose (with AppAuth).md",
     "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
     "1_Assets/images/Pasted image 20241108181139.png",
     "1_Assets/images/Pasted image 20241019213938.png",
@@ -196,8 +194,6 @@
     "1_Assets/images/LabAuthentication/Pasted image 20241206191813.png",
     "1_Assets/images/LabAuthentication",
     "1_Assets/images/LabAuthentication/Pasted image 20241121200352.png",
-    "Cloud Computing/AWS php Server + github repo clone + UserData configuration + map to squarespace domain.md",
-    "Android/HackerRank/2 - Mini-Max Sum.md",
     "Android/HackerRank/images/1 - Plus Minus - 2image.png",
     "Android/HackerRank/images/1 - Plus Minus - 1image.png",
     "Android/HackerRank/images/2 - Mini-Max Sum - 1image.png",
