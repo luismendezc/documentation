@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "95d8bf59301b7785",
+        "id": "2ef97a788eec965c",
         "type": "tabs",
         "children": [
           {
-            "id": "45148aef552f8f36",
+            "id": "3f99f87b18e0880a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "iOS/Apple - Official iOS Study.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Apple - Official iOS Study"
+              "title": "New tab"
             }
           }
         ]
@@ -159,8 +155,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "45148aef552f8f36",
+  "active": "ba743f183c2dac18",
   "lastOpenFiles": [
+    "iOS/Books iOS.md",
+    "iOS/100 days challenge/Day 21 - Project 2, part 2.md",
+    "iOS/swift_designpatterns.pdf",
+    "iOS/100 days challenge/Day 20 - Project 2, part 1.md",
+    "iOS/100 days challenge/Day 19 - Challenge day.md",
+    "iOS/Apple - Official iOS Study.md",
     "iOS/100 days challenge/Day 17 - Project 1, part two.md",
     "iOS/100 days challenge/Day 18 - Project 1, part three.md",
     "iOS/100 days challenge/Day 16 - Project 1, part one.md",
@@ -182,14 +184,9 @@
     "iOS/Introduction 100 days.md",
     "Instalar Gitlab con Ansible.md",
     "iOS/100 days challenge/Day 2 - Simple data types, part 2.md",
-    "iOS/100 days challenge/Day 1 - First steps in Swift.md",
-    "iOS/Environment Management in Xcode Using “.xcconfig” Files.md",
-    "Android/Explicit Deep Links.md",
     "iOS/100 days challenge",
-    "Lua/LÖVE 2D and Lua.md",
     "Lua",
     "1_Assets/pdf/SecDevOpsyAdministracióndeRedesparaCloud.pdf",
-    "Android/Animations android.md",
     "1_Assets/pdf/Herramientas_de_Automatizacion_de_Despliegues.pdf",
     "1_Assets/images/Pasted image 20241108181139.png",
     "1_Assets/images/Pasted image 20241019213938.png",
@@ -205,7 +202,6 @@
     "Android/HackerRank/images",
     "Android/HackerRank/11-2024_LuisEnriqueMendezCantero_Resume.pdf",
     "Android/HackerRank",
-    "1_Assets/pdf/CloudComputing/AWS php Server.pdf",
     "1_Assets/pdf/CloudComputing/AWS php Server.pdf"
   ]
 }
