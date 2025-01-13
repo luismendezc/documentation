@@ -1,0 +1,14 @@
+//
+//  Int4RedRelease.xcconfig
+//  SplitVersionsUIKit
+//
+//  Created by Luis Enrique Mendez Cantero on 13.01.25.
+//
+
+#include "../Environments/Int4.xcconfig"
+#include "../Colors/Red.xcconfig"
+#include "../BuildTypes/Release.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.oceloti.lemc.SplitVersionsUIKit.int4
+
+APP_DISPLAY_NAME = Split Int4 Red Release

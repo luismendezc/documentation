@@ -1,0 +1,14 @@
+//
+//  ProdRedRelease.xcconfig
+//  SplitVersionsUIKit
+//
+//  Created by Luis Enrique Mendez Cantero on 13.01.25.
+//
+
+#include "../Environments/Prod.xcconfig"
+#include "../Colors/Red.xcconfig"
+#include "../BuildTypes/Release.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.oceloti.lemc.SplitVersionsUIKit
+
+APP_DISPLAY_NAME = Split Prod Red Release

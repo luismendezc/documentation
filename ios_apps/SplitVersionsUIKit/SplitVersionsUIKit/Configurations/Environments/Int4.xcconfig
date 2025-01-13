@@ -1,0 +1,9 @@
+//
+//  Int4.xcconfig
+//  SplitVersionsUIKit
+//
+//  Created by Luis Enrique Mendez Cantero on 13.01.25.
+//
+
+BASE_API_URL = https://api.int4.example.com
+APP_ENVIRONMENT = Int4
