@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "iOS/Xcode - Build Settings.md",
+                "file": "iOS/Split Build Settings SwiftUI-UIKit.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Xcode - Build Settings"
+              "title": "Split Build Settings SwiftUI-UIKit"
             }
           }
         ]
@@ -164,7 +164,7 @@
     "1_Assets/images/iOS/Pasted image 20250113162045.png",
     "1_Assets/images/iOS/Pasted image 20250113161747.png",
     "iOS/Info.plist.md",
-    "iOS/Xcode - Build Settings.md",
+    "iOS/Split Build Settings SwiftUI-UIKit.md",
     "1_Assets/images/iOS/Pasted image 20250113161918.png",
     "1_Assets/images/iOS/Pasted image 20250113161910.png",
     "1_Assets/images/iOS/Pasted image 20250113161905.png",

@@ -1,5 +1,8 @@
 https://developer.apple.com/documentation/xcode/customizing-the-build-schemes-for-a-project
 
+VIDEO FOR SWIFTUI:
+https://youtu.be/zIjqW6b0W4g
+
 ### Step 1: Project Setup
 
 1. **Create a New Xcode Project:**
