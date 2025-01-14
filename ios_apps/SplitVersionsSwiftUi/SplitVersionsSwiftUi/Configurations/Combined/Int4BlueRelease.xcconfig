@@ -1,0 +1,14 @@
+//
+//  Int4BlueRelease.xcconfig
+//  SplitVersionsSwiftUi
+//
+//  Created by Luis Enrique Mendez Cantero on 14.01.25.
+//
+
+#include "../Environments/Int4.xcconfig"
+#include "../Colors/Blue.xcconfig"
+#include "../BuildTypes/Release.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.oceloti.lemc.SplitVersionsSwiftUi.int4
+
+APP_DISPLAY_NAME = SplitSwiftUi Int4 Blue Release

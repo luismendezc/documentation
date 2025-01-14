@@ -1,0 +1,12 @@
+//
+//  Release.xcconfig
+//  SplitVersionsSwiftUi
+//
+//  Created by Luis Enrique Mendez Cantero on 14.01.25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+LOG_LEVEL = error
+ENABLE_DEBUG_MODE = NO

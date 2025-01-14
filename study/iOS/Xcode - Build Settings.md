@@ -131,19 +131,24 @@ arduino
 
 Copy code
 
-`// Int1.xcconfig BASE_API_URL = https://api.int1.example.com APP_ENVIRONMENT = Int1`
+`// Int1.xcconfig 
+BASE_API_URL = https://api.int1.example.com APP_ENVIRONMENT = Int1`
 
 arduino
 
 Copy code
 
-`// Int4.xcconfig BASE_API_URL = https://api.int4.example.com APP_ENVIRONMENT = Int4`
+`// Int4.xcconfig 
+BASE_API_URL = https://api.int4.example.com 
+APP_ENVIRONMENT = Int4`
 
 arduino
 
 Copy code
 
-`// Prod.xcconfig BASE_API_URL = https://api.prod.example.com APP_ENVIRONMENT = Prod`
+`// Prod.xcconfig 
+BASE_API_URL = https://api.prod.example.com 
+APP_ENVIRONMENT = Prod`
 
 #### 2. App Color `.xcconfig`
 
@@ -153,13 +158,15 @@ arduino
 
 Copy code
 
-`// Red.xcconfig APP_COLOR = red`
+`// Red.xcconfig 
+APP_COLOR = red`
 
 arduino
 
 Copy code
 
-`// Blue.xcconfig APP_COLOR = blue`
+`// Blue.xcconfig 
+APP_COLOR = blue`
 
 #### 3. Build Type `.xcconfig`
 
@@ -169,13 +176,17 @@ java
 
 Copy code
 
-`// Debug.xcconfig LOG_LEVEL = verbose ENABLE_DEBUG_MODE = YES`
+`// Debug.xcconfig 
+LOG_LEVEL = verbose 
+ENABLE_DEBUG_MODE = YES`
 
 go
 
 Copy code
 
-`// Release.xcconfig LOG_LEVEL = error ENABLE_DEBUG_MODE = NO`
+`// Release.xcconfig 
+LOG_LEVEL = error 
+ENABLE_DEBUG_MODE = NO`
 
 #### 4. Combined `.xcconfig`
 
@@ -191,7 +202,10 @@ arduino
 
 Copy code
 
-`// ProdBlueRelease.xcconfig #include "../Environments/Prod.xcconfig" #include "../Colors/Blue.xcconfig" #include "../BuildTypes/Release.xcconfig"`
+`// ProdBlueRelease.xcconfig 
+#include "../Environments/Prod.xcconfig" 
+#include "../Colors/Blue.xcconfig" 
+#include "../BuildTypes/Release.xcconfig"`
 
 Each combined file inherits the variables from its included files, creating a precise and modular configuration.
 

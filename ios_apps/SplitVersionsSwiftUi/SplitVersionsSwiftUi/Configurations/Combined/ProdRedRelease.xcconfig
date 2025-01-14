@@ -1,0 +1,14 @@
+//
+//  ProdRedRelease.xcconfig
+//  SplitVersionsSwiftUi
+//
+//  Created by Luis Enrique Mendez Cantero on 14.01.25.
+//
+
+#include "../Environments/Prod.xcconfig"
+#include "../Colors/Red.xcconfig"
+#include "../BuildTypes/Release.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.oceloti.lemc.SplitVersionsSwiftUi
+
+APP_DISPLAY_NAME = SplitSwiftUi Prod Red Release

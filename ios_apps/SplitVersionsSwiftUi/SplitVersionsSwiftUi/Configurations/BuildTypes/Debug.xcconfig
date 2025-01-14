@@ -1,0 +1,9 @@
+//
+//  Debug.xcconfig
+//  SplitVersionsSwiftUi
+//
+//  Created by Luis Enrique Mendez Cantero on 14.01.25.
+//
+
+LOG_LEVEL = verbose
+ENABLE_DEBUG_MODE = YES

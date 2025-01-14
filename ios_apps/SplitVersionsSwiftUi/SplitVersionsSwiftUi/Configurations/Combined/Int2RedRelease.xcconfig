@@ -1,0 +1,14 @@
+//
+//  Int2RedRelease.xcconfig
+//  SplitVersionsSwiftUi
+//
+//  Created by Luis Enrique Mendez Cantero on 14.01.25.
+//
+
+#include "../Environments/Int2.xcconfig"
+#include "../Colors/Red.xcconfig"
+#include "../BuildTypes/Release.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.oceloti.lemc.SplitVersionsSwiftUi.int2
+
+APP_DISPLAY_NAME = SplitSwiftUi Int2 Red Release

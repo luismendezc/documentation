@@ -1,0 +1,9 @@
+//
+//  Int2.xcconfig
+//  SplitVersionsSwiftUi
+//
+//  Created by Luis Enrique Mendez Cantero on 14.01.25.
+//
+
+BASE_API_URL = https://api.int2.example.com
+APP_ENVIRONMENT = Int2
