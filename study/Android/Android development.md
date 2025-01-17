@@ -30,4 +30,6 @@ Extra:
 - [[inline, crossinline & noinline]]
 - [[Understanding Collections in Kotlin - Mutable, Immutable, Arrays, Lists, Maps, and Sets]]
 - [[Understand LiveData and MutableLiveData]]
-- 
+
+Plugins + Gradle
+- [[Android Gradle Plugin for dependency management]]
