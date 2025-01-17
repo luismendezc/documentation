@@ -3,6 +3,7 @@ plugins {
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.kotlin.compose)
   id("com.oceloti.lemc.methodlintrule")
+  id("com.autonomousapps.build-health")
 }
 
 android {
@@ -68,5 +69,16 @@ tasks.register("runTransitiveDependencyCheck") {
 
   doLast {
     println("✅ Finished running the Transitive Dependency Checker.")
+  }
+}
+
+tasks.register("runBuildHealth") {
+  group = "verification"
+  description = "Runs the buildHealth task for dependency analysis."
+
+  dependsOn("buildHealth") // Links to the existing buildHealth task.
+
+  doLast {
+    println("✅ Finished running the buildHealth task.")
   }
 }

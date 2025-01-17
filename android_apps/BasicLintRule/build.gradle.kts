@@ -5,3 +5,12 @@ plugins {
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
 }
+
+configurations.all{
+    resolutionStrategy.eachDependency {
+        if (requested.group == "com.google.guava") {
+            useVersion("31.1-jre")
+            because("Dependency Analysis plugin requires Guava 31.1-jre for reachableNodes.")
+        }
+    }
+}
