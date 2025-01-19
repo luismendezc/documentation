@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "91f16694eaa7d30f",
+        "id": "98ac1e6ac78172e1",
         "type": "tabs",
         "children": [
           {
-            "id": "094aff5bc98246ef",
+            "id": "9cb5505a68d9d673",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -89,7 +89,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "System Administration/AWS/How to connect to Amazon EC2 with ssh.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +98,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for How to connect to Amazon EC2 with ssh"
+              "title": "Backlinks"
             }
           },
           {
@@ -155,8 +154,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "094aff5bc98246ef",
+  "active": "9cb5505a68d9d673",
   "lastOpenFiles": [
+    "iOS/100 days challenge/Day 36 - Project 7, part 1.md",
+    "iOS/100 days challenge/Day 35 - Milestone - Projects 4-6.md",
+    "iOS/100 days challenge/Day 34 - Project 6, part 3.md",
+    "iOS/100 days challenge/Day 33 - Project 6, part 2.md",
+    "iOS/100 days challenge/Day 32 - Project 6, part 1.md",
+    "iOS/Good iOS Courses - Mohammed.md",
+    "iOS Routing Architecture.md",
+    "iOS/100 days challenge/Day 31 - Project 5, part 3.md",
+    "iOS/100 days challenge/Day 30 - Project 5, part 2.md",
     "iOS/100 days challenge/Day 29 - Project 5, part 1.md",
     "iOS/100 days challenge/Day 28 - Project 4, part 3.md",
     "iOS/100 days challenge/Day 27 - Project 4, part 2.md",
@@ -186,15 +194,6 @@
     "iOS/swift_designpatterns.pdf",
     "iOS/100 days challenge/Day 20 - Project 2, part 1.md",
     "iOS/100 days challenge/Day 19 - Challenge day.md",
-    "iOS/Apple - Official iOS Study.md",
-    "iOS/100 days challenge/Day 17 - Project 1, part two.md",
-    "iOS/100 days challenge/Day 18 - Project 1, part three.md",
-    "iOS/100 days challenge/Day 16 - Project 1, part one.md",
-    "iOS/100 days challenge/Day 15 - Swift review.md",
-    "iOS/Swift glossary.md",
-    "Wireless Vysor.md",
-    "iOS/100 days challenge/Day 14 - Optionals.md",
-    "iOS/100 days challenge/Day 13 - Protocols and extensions.md",
     "iOS/100 days challenge",
     "Lua",
     "1_Assets/pdf/SecDevOpsyAdministracióndeRedesparaCloud.pdf",
