@@ -8,3 +8,6 @@ https://developer.apple.com/library/archive/documentation/General/Conceptual/Dev
 Delegation pattern:
 https://www.youtube.com/watch?v=qiOKO8ta1n4
 https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Delegation.html#//apple_ref/doc/uid/TP40008195-CH14-SW2
+
+Design patterns
+https://developer.apple.com/library/archive/referencelibrary/GettingStarted/RoadMapiOS-Legacy/chapters/StreamlineYourAppswithDesignPatterns/StreamlineYourApps/StreamlineYourApps.html
