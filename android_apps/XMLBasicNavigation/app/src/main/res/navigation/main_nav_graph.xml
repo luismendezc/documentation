@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/orangeFragment">
+
+    <fragment
+        android:id="@+id/orangeFragment"
+        android:name="com.oceloti.lemc.xmlbasicnavigation.fragments.orange.OrangeFragment"
+        android:label="fragment_orange"
+        tools:layout="@layout/fragment_orange" >
+        <action
+            android:id="@+id/action_orangeFragment_to_blueFragment"
+            app:destination="@+id/blueFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/blueFragment"
+        android:name="com.oceloti.lemc.xmlbasicnavigation.fragments.blue.BlueFragment"
+        android:label="fragment_blue"
+        tools:layout="@layout/fragment_blue" >
+        <action
+            android:id="@+id/action_blueFragment_to_pinkFragment"
+            app:destination="@id/pinkFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pinkFragment"
+        android:name="com.oceloti.lemc.xmlbasicnavigation.fragments.pink.PinkFragment"
+        android:label="fragment_pink"
+        tools:layout="@layout/fragment_pink" >
+
+        <action
+            android:id="@+id/action_pinkFragment_to_secondNavGraph"
+            app:destination="@id/second_nav_graph" />
+    </fragment>
+
+    <include app:graph="@navigation/second_nav_graph" />
+</navigation>
