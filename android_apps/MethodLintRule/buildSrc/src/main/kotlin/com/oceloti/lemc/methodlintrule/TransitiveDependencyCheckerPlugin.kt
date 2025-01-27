@@ -19,10 +19,9 @@ abstract class CheckUsedTransitiveDependenciesTask : DefaultTask() {
     )
 
     // ✅ Filter resolvable runtime configurations only (ignore test configurations)
-    //!config.name.contains("test", ignoreCase = true)
     val resolvableConfigurations = project.configurations.filter { config ->
       config.isCanBeResolved &&
-          config.name.contains("runtimeClasspath", ignoreCase = true)
+              config.name.contains("runtimeClasspath", ignoreCase = true)
     }
 
     // 1. Collect explicitly declared dependencies (implementation, api)
@@ -50,7 +49,6 @@ abstract class CheckUsedTransitiveDependenciesTask : DefaultTask() {
 
     val usedTransitively = mutableSetOf<String>()
 
-    // 4. Scan source code for usage of transitives and track file + line number
     for (dep in transitives) {
       val depName = dep.split(":")[1]
       for (file in sourceFiles) {
@@ -68,12 +66,46 @@ abstract class CheckUsedTransitiveDependenciesTask : DefaultTask() {
       allowedGroupPrefixes.any { prefix -> dep.startsWith(prefix) }
     }
 
-    // 6. Fail the build if illegal external dependencies are in use
-    if (illegalTransitivesInUse.isNotEmpty()) {
-      throw RuntimeException("❌ Used external transitive dependencies detected without explicit declaration:\n${illegalTransitivesInUse.joinToString("\n")}")
+    // 6. Scan for unauthorized imports in source files
+    val unauthorizedImports = mutableListOf<Pair<File, Int>>() // File and line numbers of unauthorized imports
+    val disallowedImportsRegex = Regex("import\\s+[^\\s]+") // Match all import statements
+
+    for (file in sourceFiles) {
+      file.readLines().forEachIndexed { index, line ->
+        val match = disallowedImportsRegex.find(line)
+        if (match != null) {
+          val importedClass = match.value.removePrefix("import ").trim()
+          val declaredDependenciesGroups = declaredDeps.map { it.substringBefore(":") }
+          val resolvedDependenciesGroups = resolvedDeps.map { it.substringBefore(":") }
+
+          // If the import does not belong to explicitly declared or resolved dependencies
+          if (!declaredDependenciesGroups.any { importedClass.startsWith(it) } &&
+            !resolvedDependenciesGroups.any { importedClass.startsWith(it) }) {
+            unauthorizedImports.add(file to index + 1)
+            println("❗ Unauthorized import detected in file: ${file.path} at line ${index + 1}: $importedClass")
+          }
+        }
+      }
     }
 
-    println("✅ No unexpected used external transitive dependencies found.")
+    // 7. Fail the build if illegal transitive dependencies or unauthorized imports are detected
+    if (illegalTransitivesInUse.isNotEmpty() || unauthorizedImports.isNotEmpty()) {
+      val message = buildString {
+        append("❌ Build failed due to the following issues:\n")
+        if (illegalTransitivesInUse.isNotEmpty()) {
+          append("Used external transitive dependencies detected without explicit declaration:\n")
+          append(illegalTransitivesInUse.joinToString("\n"))
+          append("\n")
+        }
+        if (unauthorizedImports.isNotEmpty()) {
+          append("Unauthorized imports found:\n")
+          append(unauthorizedImports.joinToString("\n") { (file, line) -> "${file.path}:$line" })
+        }
+      }
+      throw RuntimeException(message)
+    }
+
+    println("✅ No unexpected used external transitive dependencies or unauthorized imports found.")
   }
 }
 
@@ -81,7 +113,7 @@ class TransitiveDependencyCheckerPlugin : Plugin<Project> {
   override fun apply(project: Project) {
     project.tasks.register("checkUsedTransitiveDependencies", CheckUsedTransitiveDependenciesTask::class.java).configure {
       group = "verification"
-      description = "Detects external transitive dependencies that are actually used in the code."
+      description = "Detects external transitive dependencies and unauthorized imports that are actually used in the code."
     }
   }
 }

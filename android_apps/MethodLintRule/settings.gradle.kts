@@ -10,9 +10,6 @@ pluginManagement {
     mavenCentral()
     gradlePluginPortal()
   }
-  plugins {
-    id("com.autonomousapps.build-health") version "2.7.0"
-  }
 }
 dependencyResolutionManagement {
   repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
