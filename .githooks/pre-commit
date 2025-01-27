@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Get the root directory of the repository
+REPO_ROOT=$(git rev-parse --show-toplevel)
+
+# Print the root directory
+echo "Repository Root Directory: $REPO_ROOT"
+
+# Exit successfully (to avoid blocking commits)
+exit 0
+
