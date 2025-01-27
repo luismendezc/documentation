@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "f7aa2d48322b1ced",
+        "id": "30584b0860807576",
         "type": "tabs",
         "children": [
           {
-            "id": "fcf5dd0eef533fe7",
+            "id": "359405af35f35ea7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "iOS/ViewController.md",
+                "file": "iOS/100 days challenge/Day 39 - Project 8, part 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ViewController"
+              "title": "Day 39 - Project 8, part 1"
             }
           }
         ]
@@ -158,14 +158,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "fcf5dd0eef533fe7",
+  "active": "359405af35f35ea7",
   "lastOpenFiles": [
+    "iOS/100 days challenge/Day 39 - Project 8, part 1.md",
+    "iOS/100 days challenge/Day 38 - Project 7, part 3.md",
+    "iOS/100 days challenge/Day 36 - Project 7, part 1.md",
+    "iOS/Apple - Official iOS Study.md",
+    "iOS/Xcode essentials.md",
+    "iOS/100 days challenge/Day 37 - Project 7, part 2.md",
+    "iOS/ViewController.md",
     "iOS/Projects/Basic Navigation UIKit.md",
     "1_Assets/images/iOS/Pasted image 20250121220655.png",
     "1_Assets/images/iOS/Pasted image 20250121215957.png",
     "1_Assets/images/iOS/Pasted image 20250121215803.png",
     "1_Assets/images/iOS/Pasted image 20250121212724.png",
-    "iOS/Apple - Official iOS Study.md",
     "1_Assets/images/Pasted image 20241019213938.png",
     "1_Assets/images/iOS/Pasted image 20250121212311.png",
     "iOS/Books iOS.md",
@@ -174,9 +180,7 @@
     "iOS/Info.plist.md",
     "iOS/iOS Routing Architecture.md",
     "iOS/Swift glossary.md",
-    "iOS/ViewController.md",
     "iOS/Xcode - Convert project to workspace.md",
-    "iOS/Xcode essentials.md",
     "iOS/Patterns/Observer pattern in iOS.md",
     "iOS/Courses - Materials",
     "iOS/Patterns",
@@ -189,12 +193,9 @@
     "Wireless Vysor.md",
     "Build sett.md",
     "Android/Android development.md",
-    "iOS/100 days challenge/Day 36 - Project 7, part 1.md",
     "iOS/100 days challenge/Day 35 - Milestone - Projects 4-6.md",
     "iOS/100 days challenge/Day 34 - Project 6, part 3.md",
     "iOS/100 days challenge/Day 33 - Project 6, part 2.md",
-    "iOS/100 days challenge/Day 32 - Project 6, part 1.md",
-    "iOS/100 days challenge/Day 31 - Project 5, part 3.md",
     "1_Assets/images/iOS/Pasted image 20250113162045.png",
     "1_Assets/images/iOS/Pasted image 20250113161747.png",
     "1_Assets/images/iOS/Pasted image 20250113161918.png",
