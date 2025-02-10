@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "30584b0860807576",
+        "id": "22ad7f1cb20d5e1c",
         "type": "tabs",
         "children": [
           {
-            "id": "359405af35f35ea7",
+            "id": "4c699cc3cff1d3c0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "iOS/100 days challenge/Day 39 - Project 8, part 1.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Day 39 - Project 8, part 1"
+              "title": "New tab"
             }
           }
         ]
@@ -158,8 +154,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "359405af35f35ea7",
+  "active": "4c699cc3cff1d3c0",
   "lastOpenFiles": [
+    "iOS/100 days challenge/Day 40 - Project 8, part 2.md",
     "iOS/100 days challenge/Day 39 - Project 8, part 1.md",
     "iOS/100 days challenge/Day 38 - Project 7, part 3.md",
     "iOS/100 days challenge/Day 36 - Project 7, part 1.md",
@@ -195,7 +192,6 @@
     "Android/Android development.md",
     "iOS/100 days challenge/Day 35 - Milestone - Projects 4-6.md",
     "iOS/100 days challenge/Day 34 - Project 6, part 3.md",
-    "iOS/100 days challenge/Day 33 - Project 6, part 2.md",
     "1_Assets/images/iOS/Pasted image 20250113162045.png",
     "1_Assets/images/iOS/Pasted image 20250113161747.png",
     "1_Assets/images/iOS/Pasted image 20250113161918.png",
