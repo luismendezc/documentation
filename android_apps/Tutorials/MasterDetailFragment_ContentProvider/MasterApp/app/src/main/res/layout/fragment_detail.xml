@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:padding="16dp">
+
+  <TextView
+    android:id="@+id/textViewDetail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Select an item"
+    android:textSize="18sp"
+    android:padding="8dp"/>
+
+  <Button
+    android:id="@+id/buttonTakeScreenshot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Take Screenshot"/>
+
+  <TextView
+    android:id="@+id/textViewScreenshots"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Saved Screenshots"
+    android:textSize="16sp"
+    android:paddingTop="16dp"
+    android:visibility="gone"/>
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerViewScreenshots"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:visibility="gone"/>
+</LinearLayout>
