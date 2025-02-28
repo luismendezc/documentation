@@ -11,10 +11,14 @@
             "id": "52ae95bd1ae84ed8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Android/Android Compose Official Examples.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Android Compose Official Examples"
             }
           }
         ]
@@ -162,5 +166,7 @@
     }
   },
   "active": "5783e0e1cdaa0732",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "Android/Android Compose Official Examples.md"
+  ]
 }
