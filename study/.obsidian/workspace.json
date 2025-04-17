@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "Android Compose Official Examples"
             }
+          },
+          {
+            "id": "7287c63127af67d1",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.7"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -165,7 +178,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5783e0e1cdaa0732",
+  "active": "7287c63127af67d1",
   "lastOpenFiles": [
     "Android/Android Compose Official Examples.md"
   ]
