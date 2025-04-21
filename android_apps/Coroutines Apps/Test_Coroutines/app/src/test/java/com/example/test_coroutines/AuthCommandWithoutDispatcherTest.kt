@@ -14,15 +14,15 @@ class AuthCommandWithoutDispatcherTest {
     @Test
     fun `test execute with CountDownLatch`() {
         // Arrange
-        val authCommand = AuthCommandWithoutDispatcher()
+        val sut = AuthCommandWithoutDispatcher()
         val latch = CountDownLatch(1)
 
         // Act
-        authCommand.execute()
+        sut.execute()
         latch.await(1500, TimeUnit.MILLISECONDS)
 
         // Assert
-        assertTrue(authCommand.isComplete)
+        assertTrue(sut.isComplete)
         println("Test for AuthCommandWithoutDispatcher completed")
     }
 }
