@@ -4,53 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "79058c4bef87944b",
+        "id": "c66a3d808bd8da16",
         "type": "tabs",
         "children": [
           {
-            "id": "52ae95bd1ae84ed8",
+            "id": "86224228a2549521",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Android/Android Compose Official Examples.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Android Compose Official Examples"
-            }
-          },
-          {
-            "id": "2504b263aaebbdaf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Matrix/Matrix - Trixnity.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Matrix - Trixnity"
-            }
-          },
-          {
-            "id": "27522fc88ab24748",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "KMP/Collection of videos KMP.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Collection of videos KMP"
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -186,6 +153,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -194,10 +162,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5783e0e1cdaa0732",
+  "active": "86224228a2549521",
   "lastOpenFiles": [
-    "Matrix/Matrix - Trixnity.md",
+    "Koin for SDK.md",
+    "SDKs/AndroidSDK/Things I whish I knew when I started building Android SDK.md",
+    "SDKs/AndroidSDK/Use Private Maven Repository.md",
+    "SDKs/AndroidSDK/Tutorial up to date easy sdk.md",
+    "SDKs/Semantic Versioning 2.0.0.md",
     "KMP/Collection of videos KMP.md",
+    "SDKs/AndroidSDK",
+    "SDKs",
+    "Matrix/Matrix - Trixnity.md",
     "Android/Android Compose Official Examples.md",
     "Matrix",
     "KMP"

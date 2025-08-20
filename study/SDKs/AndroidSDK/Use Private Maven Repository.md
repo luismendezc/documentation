@@ -1,0 +1,1 @@
+https://medium.com/@farazrasheed/use-private-maven-repository-6ed07946900b
